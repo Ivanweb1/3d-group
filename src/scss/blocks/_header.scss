@@ -1,12 +1,52 @@
 @use '../variables' as *;
+@use '../mixins' as *;
 
 .header {
-  position: fixed; inset: 0 0 auto; z-index: 10;
-  backdrop-filter: blur(10px);
-  &__in { display: flex; align-items: center; gap: 32px; padding-block: 16px; }
-  &__logo { font-weight: 700; font-size: 20px; }
-  &__nav { display: none; gap: 24px; margin-left: auto;
-    @media (min-width: $bp-lg) { display: flex; } }
-  &__nav-link { color: $color-muted; &:hover { color: $color-text; } }
-  .btn { margin-left: auto; @media (min-width: $bp-lg) { margin-left: 0; } }
+  position: sticky; top: 0; z-index: 50;
+  background: $c-white;
+  border-bottom: 1px solid #e7e7e7;
+
+  &__in {
+    display: flex; align-items: center; gap: 24px;
+    height: 101px;
+    @include down($bp-lg) { height: 72px; }
+  }
+  &__logo { flex-shrink: 0; color: $c-black; svg { width: clamp(180px, 14vw, 272px); height: auto; } }
+
+  &__nav {
+    display: flex; align-items: center; gap: clamp(24px, 3vw, 60px);
+    margin-inline: auto;
+    @include down($bp-xl) { display: none; }
+  }
+  &__link {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-family: $font-head; font-size: 15px; line-height: 21px; text-transform: uppercase;
+    transition: opacity .2s;
+    &:hover { opacity: .6; }
+    &.is-active { text-decoration: underline; text-underline-offset: 6px; }
+    svg { width: 24px; height: 24px; }
+  }
+  &__contact {
+    font-family: $font-head; font-size: 15px; line-height: 21px;
+    &:hover { opacity: .6; }
+    @include down($bp-xl) { margin-left: auto; }
+  }
+
+  &__burger {
+    display: none; width: 40px; height: 40px; padding: 8px; border: 0; background: none;
+    @include down($bp-xl) { display: block; }
+    span { display: block; height: 2px; margin: 5px 0; background: $c-black; transition: transform .3s, opacity .3s; }
+  }
+  &.is-open &__burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  &.is-open &__burger span:nth-child(2) { opacity: 0; }
+  &.is-open &__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @include down($bp-xl) {
+    &.is-open &__nav {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 20px;
+      position: absolute; top: 100%; left: 0; right: 0;
+      padding: 24px $gutter 32px;
+      background: $c-white; border-bottom: 1px solid #e7e7e7;
+    }
+  }
 }

@@ -1,10 +1,26 @@
-$color-bg: #101010;
-$color-text: #ffffff;
-$color-muted: #dadada;
-$color-surface: #323232;
-$color-accent: #eb8f73;
+// Цвета и шрифты из макета Figma «Кейсы_прототип»
+$c-black: #101010;
+$c-text: #202020;
+$c-white: #ffffff;
+$c-line: #c9c9c9;
+$c-line-light: #d9d9d9;
+$c-gray-bg: #e1e1e1;
+$c-gray-icon: #eeeeee;
+$c-gray-text: #5a5a5a;
+$c-muted: #868686;
+$c-dot: #9d9d9d;
+$c-blue-bg: #d1dbea;
+$c-blue: #667ea3;
 
-$font-main: 'Montserrat', sans-serif;
+// Suisse Int'l — шрифт макета (платный). Если есть файлы шрифта — положить в src/assets/fonts
+// и подключить @font-face в _fonts.scss. Пока подставляется Inter.
+$font-head: 'Suisse Intl', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+$font-body: 'Montserrat', Arial, sans-serif;
 
+$container: 1780px;
+$gutter: clamp(16px, 3.6vw, 70px);
+
+$bp-sm: 576px;
 $bp-md: 768px;
 $bp-lg: 992px;
+$bp-xl: 1200px;

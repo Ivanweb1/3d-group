@@ -1,8 +1,9 @@
-// Bootstrap — только сетка (container/row/col), как на текущем сайте
-@use 'bootstrap/scss/bootstrap-grid';
-
 @use 'base';
 @use 'blocks/header';
-@use 'blocks/hero';
-@use 'blocks/cases';
+@use 'blocks/page-head';
+@use 'blocks/tasks';
+@use 'blocks/case-search';
+@use 'blocks/case-filter';
+@use 'blocks/case-card';
+@use 'blocks/cta';
 @use 'blocks/footer';

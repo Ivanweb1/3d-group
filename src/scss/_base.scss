@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use 'mixins' as *;
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -7,35 +8,48 @@ html.lenis, html.lenis body { height: auto; }
 
 body {
   margin: 0;
-  font-family: $font-main;
-  background: $color-bg;
-  color: $color-text;
+  min-width: 320px;
+  font-family: $font-body;
+  color: $c-black;
+  background-color: $c-white;
+  // Фон «акварельная бумага» с прозрачностью 20%, как в макете
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)),
+    url('../assets/images/paper.jpg');
+  background-size: 100% auto;
+  background-repeat: repeat-y;
   -webkit-font-smoothing: antialiased;
 }
 
 a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
+img, svg { display: block; max-width: 100%; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
 
-.container-fluid { padding-inline: 16px; @media (min-width: $bp-lg) { padding-inline: 40px; } }
-
-.section { padding-block: 80px; }
-.section__title { margin: 0 0 40px; font-size: clamp(32px, 5vw, 64px); font-weight: 600; }
-
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 14px 28px; border: 0; border-radius: 40px;
-  background: $color-accent; color: $color-bg;
-  font: 600 16px/1 $font-main; cursor: pointer;
-  transition: opacity .2s;
-  &:hover { opacity: .85; }
+.container {
+  width: 100%;
+  max-width: $container + 2 * 70px;
+  margin-inline: auto;
+  padding-inline: $gutter;
 }
 
-.card { padding: 32px; border-radius: 24px; background: $color-surface; margin-bottom: 24px; }
+.line { height: 1px; border: 0; margin: 0; background: $c-line; }
 
-.ui-input {
-  width: 100%; padding: 16px 20px; margin-bottom: 16px;
-  border: 1px solid $color-surface; border-radius: 12px;
-  background: transparent; color: $color-text; font: 16px $font-main;
+.eyebrow {
+  margin: 0 0 32px;
+  font-family: $font-head;
+  font-size: 15px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: rgba($c-black, .6);
 }
 
-.modal { max-width: 480px; background: $color-bg; color: $color-text; border-radius: 24px; }
+.h2 { @include title(77px, 30px); }
+.h3 { @include title(40px, 24px); line-height: 1.2; color: #000; text-align: center; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.modal { width: min(560px, 100%); padding: 40px; border-radius: 30px; }
+.modal__title { @include title(32px, 24px); margin-bottom: 24px; }

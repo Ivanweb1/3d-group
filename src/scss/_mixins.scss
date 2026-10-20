@@ -1,0 +1,25 @@
+@use 'variables' as *;
+
+@mixin up($bp) { @media (min-width: $bp) { @content; } }
+@mixin down($bp) { @media (max-width: $bp - 0.02px) { @content; } }
+
+// Маленькие серые квадраты 3×3 по углам блока — декор из макета
+@mixin corner-dots($color: $c-dot) {
+  background-image:
+    linear-gradient($color, $color), linear-gradient($color, $color),
+    linear-gradient($color, $color), linear-gradient($color, $color);
+  background-size: 3px 3px;
+  background-repeat: no-repeat;
+  background-position: top left, top right, bottom left, bottom right;
+}
+
+// Заголовок в стиле сайта: Suisse, капс
+@mixin title($size-max: 77px, $size-min: 32px) {
+  margin: 0;
+  font-family: $font-head;
+  font-weight: 400;
+  font-size: clamp($size-min, 4vw, $size-max);
+  line-height: 1;
+  text-transform: uppercase;
+  color: $c-black;
+}

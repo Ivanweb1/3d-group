@@ -1,3 +1,33 @@
 @use '../variables' as *;
+@use '../mixins' as *;
 
-.footer { padding-block: 40px; border-top: 1px solid $color-surface; color: $color-muted; }
+.footer {
+  padding: 40px 0 32px; background: $c-white;
+
+  &__top {
+    display: flex; justify-content: space-between; align-items: center; gap: 32px;
+    @include down($bp-xl) { flex-direction: column; align-items: flex-start; }
+  }
+  &__logo { color: $c-black; svg { width: 272px; height: auto; } }
+  &__right { display: flex; align-items: center; gap: clamp(24px, 4vw, 80px); flex-wrap: wrap; }
+  &__nav { display: flex; flex-wrap: wrap; gap: 16px clamp(24px, 4vw, 80px); }
+  &__link { font-family: $font-head; font-size: 20px; &:hover { opacity: .6; } }
+  &__socials { display: flex; gap: 12px; a { display: block; &:hover { opacity: .6; } } svg { width: 25px; height: 25px; } }
+
+  &__mid {
+    display: flex; justify-content: space-between; gap: 24px; margin-top: 22px; padding-bottom: 30px;
+    border-bottom: 1px solid $c-line;
+    font-size: 16px; line-height: 1.25;
+    @include down($bp-md) { flex-direction: column; }
+  }
+  &__req { max-width: 220px; margin: 0; }
+  &__contacts { display: flex; flex-direction: column; gap: 4px; }
+  &__contact {
+    display: flex; justify-content: flex-end; gap: 20px;
+    b { min-width: 111px; font-weight: 500; text-align: right; }
+    a:hover { opacity: .6; }
+    @include down($bp-md) { justify-content: space-between; }
+  }
+  &__copy { margin: 32px 0 0; text-align: center; font-family: $font-head; font-size: 18px; color: $c-muted;
+    a:hover { color: $c-black; } }
+}

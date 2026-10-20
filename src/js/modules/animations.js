@@ -17,14 +17,5 @@ export function initAnimations() {
     });
   });
 
-  // Бегущая строка, сдвигается при скролле
-  gsap.utils.toArray('[data-marquee]').forEach((el) => {
-    gsap.to(el.firstElementChild, {
-      xPercent: -25,
-      ease: 'none',
-      scrollTrigger: { trigger: el, scrub: true },
-    });
-  });
-
   document.documentElement.classList.add('is-gsap-ready');
 }

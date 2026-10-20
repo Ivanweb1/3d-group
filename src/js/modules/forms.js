@@ -8,4 +8,13 @@ export function initForms() {
   });
 
   Fancybox.bind('[data-fancybox]');
+
+  // Отправка формы пока не подключена — здесь будет запрос к обработчику Битрикса
+  document.querySelectorAll('[data-form]').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('[type="submit"]');
+      if (btn) btn.textContent = 'отправлено';
+    });
+  });
 }
