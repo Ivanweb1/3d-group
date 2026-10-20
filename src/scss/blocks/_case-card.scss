@@ -12,23 +12,38 @@
   }
 }
 
+// Карточка кейса. Устроена так, чтобы её можно было заполнять из админки:
+// - фото любого размера обрезается под одну пропорцию;
+// - высота подстраивается под текст, длинный текст обрезается до 2 строк;
+// - пустую строку таблицы можно просто не выводить;
+// - точки-разделители в списках рисует CSS, в данных — обычный список.
+$arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12h15m-6-6 6 6-6 6' fill='none' stroke='%23101010' stroke-opacity='.64' stroke-width='1.5'/%3E%3C/svg%3E");
+
 .case-card {
-  --img-h: 100%;
-  position: relative; display: block;
-  aspect-ratio: 884 / 603;
-  overflow: hidden;
-  border: 1px solid $c-line-light; border-radius: 30px;
-  background: $c-white;
   &[hidden] { display: none; }
 
-  // Фото
-  &__media {
-    position: absolute; inset: 0 0 auto; height: var(--img-h);
-    overflow: hidden; border-radius: 30px;
-    transition: height .6s cubic-bezier(.65, 0, .35, 1);
-    img { width: 100%; height: 100%; object-fit: cover; }
-    &::after { content: ''; position: absolute; inset: 0; background: rgba(#000, .2); }
+  &__link {
+    display: flex; flex-direction: column; height: 100%;
+    overflow: hidden;
+    border: 1px solid $c-line-light; border-radius: 30px;
+    background: $c-white;
+    transition: box-shadow .3s;
+    &:hover { box-shadow: 0 20px 50px rgba(0, 0, 0, .08); }
   }
+
+  &__media {
+    position: relative; flex-shrink: 0;
+    aspect-ratio: 884 / 351;
+    overflow: hidden; border-radius: 30px;
+    background: $c-gray-bg;
+    img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+    &::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(#000, .45), rgba(#000, .1) 50%);
+    }
+    @include down($bp-md) { aspect-ratio: 4 / 3; }
+  }
+  &__link:hover &__media img { transform: scale(1.05); }
 
   &__badges { position: absolute; top: 12px; left: 12px; right: 12px; z-index: 2; display: flex; flex-wrap: wrap; gap: 8px; }
   &__badge {
@@ -39,53 +54,49 @@
     &--blue { background: $c-blue-bg; border: 1px solid rgba($c-blue, .2); color: $c-blue; }
   }
 
-  // «Узнать больше →» внизу фото
   &__more {
-    position: absolute; left: 24px; right: 24px; top: calc(var(--img-h) - 56px); z-index: 2;
+    position: absolute; left: 24px; right: 24px; bottom: 24px; z-index: 2;
     display: flex; justify-content: space-between; align-items: center;
-    font-family: $font-head; font-size: 24px; line-height: 32px; text-transform: uppercase; color: $c-white;
-    opacity: 0; transition: opacity .3s, top .6s cubic-bezier(.65, 0, .35, 1);
-    svg { width: 32px; height: 32px; }
+    font-family: $font-head; font-size: clamp(18px, 1.3vw, 24px); line-height: 32px; text-transform: uppercase; color: $c-white;
+    svg { width: 32px; height: 32px; transition: transform .3s; }
   }
+  &__link:hover &__more svg { transform: translateX(6px); }
 
-  // Таблица: отрасль / решение / проверено
-  &__info {
-    position: absolute; left: 0; right: 0; top: var(--img-h);
-    margin: 0; transition: top .6s cubic-bezier(.65, 0, .35, 1);
-  }
+  &__info { flex: 1; margin: 0; }
   &__row {
-    display: grid; grid-template-columns: 142px 48px 1fr; align-items: stretch;
-    min-height: 84px; border-top: 1px solid $c-line-light;
+    display: grid; grid-template-columns: 142px 48px 1fr;
+    border-top: 1px solid $c-line-light;
     font-family: $font-head; font-size: 15px; line-height: 21px; text-transform: uppercase; color: rgba($c-black, .64);
-    &:first-child { border-top: 0; }
-  }
-  &__key, &__val { display: flex; align-items: center; margin: 0; padding: 12px 24px; }
-  &__arrow {
-    display: flex; align-items: center; justify-content: center;
-    border-inline: 1px solid $c-line-light;
-    svg { width: 24px; height: 24px; }
-  }
-  &__val { flex-wrap: wrap; column-gap: 12px; row-gap: 4px; }
-  &__dot { width: 8px; height: 8px; border: 1px solid #989898; border-radius: 50%; }
 
-  // Наведение на десктопе: фото сжимается, снизу выезжает таблица
-  @media (hover: hover) and (min-width: $bp-lg) {
-    &:hover, &:focus-visible { --img-h: 58.2%; }
-    &:hover &__more, &:focus-visible &__more { opacity: 1; }
+    // Колонка со стрелкой — без лишней разметки
+    &::before {
+      content: ''; grid-column: 2; grid-row: 1;
+      border-inline: 1px solid $c-line-light;
+      background: $arrow center / 24px no-repeat;
+    }
+    dt { grid-column: 1; grid-row: 1; padding: 32px 24px; }
+    // Отступы через margin, чтобы обрезка до 2 строк не показывала кусок третьей
+    dd {
+      grid-column: 3; grid-row: 1; margin: 32px 24px; padding: 0;
+      display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+    }
+  }
+  &__list {
+    display: inline; margin: 0; padding: 0; list-style: none;
+    li { display: inline; }
+    li + li::before {
+      content: ''; display: inline-block; vertical-align: middle;
+      width: 8px; height: 8px; margin: -2px 12px 0;
+      border: 1px solid #989898; border-radius: 50%;
+    }
   }
 
-  // Планшеты и телефоны: фото и таблица идут друг под другом, без анимации
-  @media (hover: none), (max-width: $bp-lg - 0.02px) {
-    aspect-ratio: auto;
-    &__media { position: relative; height: auto; aspect-ratio: 884 / 351; }
-    &__more { display: none; }
-    &__info { position: static; }
-  }
   @include down($bp-md) {
-    &__media { aspect-ratio: 4 / 3; }
-    &__row { grid-template-columns: 1fr; min-height: 0; }
-    &__arrow { display: none; }
-    &__key { padding: 16px 20px 4px; color: $c-muted; }
-    &__val { padding: 0 20px 16px; color: $c-black; }
+    &__row {
+      grid-template-columns: 1fr;
+      &::before { display: none; }
+      dt { padding: 16px 20px 4px; color: $c-muted; }
+      dd { grid-column: 1; grid-row: 2; margin: 0 20px 16px; color: $c-black; -webkit-line-clamp: 4; }
+    }
   }
 }
