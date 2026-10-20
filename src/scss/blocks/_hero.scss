@@ -21,7 +21,6 @@
     @include up($bp-lg) { font-size: 2.2rem; text-align: right; max-width: 68rem; justify-self: end; }
   }
 
-  // Заголовок-карусель, как на главной: слайды лежат друг на друге и сменяются по диагонали
   &__title {
     @include title; grid-area: title; position: relative; z-index: 1;
     font-size: 6rem; line-height: 1; letter-spacing: -0.04em;
@@ -32,7 +31,6 @@
   &__title-slide {
     grid-area: 1 / 1; display: flex; flex-direction: column; align-items: flex-start;
     padding: 1rem 0; white-space: nowrap;
-    &:not(:first-child) { transform: translate(-100%, 100%); }
     small {
       display: block; margin-top: 1.2rem;
       font: 600 1.4rem/1.2 $font-primary; text-transform: none; letter-spacing: 0;

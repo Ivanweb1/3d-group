@@ -126,8 +126,10 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBo
       grid-template-columns: 1fr;
       &::before { display: none; }
       dt { padding: 1.6rem 2.4rem .4rem; color: $c-gray; }
-      dd { grid-column: 1; grid-row: 2; margin: 0 2.4rem 1.6rem; color: $c-black; -webkit-line-clamp: 4; }
+      dd { grid-column: 1; grid-row: 2; margin: 0 2.4rem 1.6rem; color: $c-black; -webkit-line-clamp: 6; }
     }
+    &__title { -webkit-line-clamp: 3; }
+    &__head { padding: 2rem 2rem 1.4rem; }
   }
 }
 
@@ -144,7 +146,7 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBo
   &__btn {
     display: inline-flex; align-items: center; gap: 1.2rem;
     padding: 1.6rem 3.2rem; border: .1rem solid rgba($c-white, .6); border-radius: 10rem; background: none;
-    font: 400 1.6rem/1 $font-secondary; text-transform: uppercase; color: $c-white;
+    font: 400 1.5rem/1 $font-secondary; text-transform: uppercase; color: $c-white; white-space: nowrap;
     transition: background .2s, color .2s;
     @include up($bp-lg) { font-size: 2rem; padding: 2rem 4rem; }
     svg { width: 2.4rem; height: 2.4rem; }

@@ -32,30 +32,16 @@ export function initTitles() {
     });
   });
 
-  // Заголовок первого экрана: карусель слайдов
-  document.querySelectorAll('[data-title-slider]').forEach((title) => {
-    const slides = [...title.querySelectorAll('.hero__title-slide')];
-    if (!slides.length) return;
-
-    const first = SplitText.create(slides[0].querySelector('.hero__title-word') || slides[0], { type: 'chars' });
-    revealChars(first.chars, 0.2);
-    if (slides.length < 2) return;
-
-    let current = 0;
-    const next = () => {
-      const from = slides[current];
-      current = (current + 1) % slides.length;
-      const to = slides[current];
-      gsap.to(from, { xPercent: 100, yPercent: -100, duration: 1.1, ease: 'power3.inOut' });
-      gsap.fromTo(to, { xPercent: -100, yPercent: 100, x: 0, y: 0 }, { xPercent: 0, yPercent: 0, duration: 1.1, ease: 'power3.inOut' });
-    };
-    gsap.set(slides.slice(1), { xPercent: -100, yPercent: 100, x: 0, y: 0 });
-    let timer = setInterval(next, 3500);
-
-    // Не крутим, пока вкладка скрыта
-    document.addEventListener('visibilitychange', () => {
-      clearInterval(timer);
-      if (!document.hidden) timer = setInterval(next, 3500);
+  // Заголовок первого экрана: побуквенно при загрузке и плавный сдвиг вбок при прокрутке
+  document.querySelectorAll('[data-hero-title]').forEach((title) => {
+    const word = title.querySelector('.hero__title-word');
+    if (!word) return;
+    const split = SplitText.create(word, { type: 'chars' });
+    revealChars(split.chars, 0.2);
+    gsap.to(word, {
+      xPercent: 12,
+      ease: 'none',
+      scrollTrigger: { trigger: title, start: 'top 30%', end: 'bottom top', scrub: true },
     });
   });
 }
