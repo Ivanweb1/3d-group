@@ -54,7 +54,7 @@ src/
 Каждой карточке `.case-card` нужны атрибуты:
 - `data-sphere` — сфера: `ecommerce`, `corporate`, `industry`, `3d`, `creative`, `production`, `finance`, `realty`, `it`
 - `data-format` — формат: `implementation`, `integration`, `development`, `support`
-- `data-tags` — платформы через пробел: `bitrix24`, `amocrm`, `sites`
+- `data-tags` — платформы через пробел: `bitrix24`, `amocrm`, `sites`, `ai-bots`
 - `data-tasks` — задачи через пробел: `crm-new`, `migration`, `1c`, `sales`, `processes`, `telephony`, `site-crm`, `analytics`, `growth`
 
 Клик по плитке задачи прокручивает к каталогу и оставляет кейсы с этой задачей. Счётчик «N кейсов» на плитке считается сам; если кейсов нет, плитка неактивна и подписана «Скоро».
@@ -100,7 +100,7 @@ src/
 Каждой карточке `.case-card` нужны атрибуты:
 - `data-sphere` — сфера: `retail`, `production`, `logistics`, `finance`, `law`, `services`, `auto`
 - `data-format` — формат: `individual`, `ready`
-- `data-tags` — платформы через пробел: `bitrix24`, `amocrm`, `sites`
+- `data-tags` — платформы через пробел: `bitrix24`, `amocrm`, `sites`, `ai-bots`
 - `data-tasks` — задачи через пробел: `crm-new`, `migration`, `1c`, `sales`, `processes`, `telephony`, `site-crm`, `analytics`, `growth`
 
 Клик по плитке задачи прокручивает к каталогу и оставляет кейсы с этой задачей. Счётчик «N кейсов» на плитке считается сам; если кейсов нет, плитка неактивна и подписана «Скоро».
