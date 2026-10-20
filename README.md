@@ -1,6 +1,6 @@
-# 3D GROUP
+# 3D сайт
 
-Вёрстка сайта 3D GROUP (https://3d-group.space). Стек повторяет текущий сайт, но собирается через Vite.
+Заготовка проекта: стартовая страница и подключённые библиотеки.
 
 ## Стек
 
@@ -30,9 +30,9 @@ src/
     main.js
     modules/       smooth-scroll, animations, sliders, forms
   scss/
-    _variables.scss
+    _variables.scss   цвета, шрифт, брейкпоинты
     _base.scss
-    blocks/        header, hero, cases, footer, ...
+    blocks/           стили блоков: header, hero, cases, footer, ...
     main.scss
 ```
 
@@ -41,5 +41,3 @@ src/
 - `data-marquee` — бегущая строка, двигается при скролле
 - `data-fancybox` — открыть модалку
 - `data-mask` — маска телефона
-
-Сайт работает на 1С-Битрикс (шаблон `leadspace`). Вёрстку из `dist/` можно перенести в шаблон Битрикса.
