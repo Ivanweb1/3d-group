@@ -40,6 +40,14 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBo
     img { position: relative; width: 34%; max-width: 16rem; height: auto; object-fit: contain; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
   }
 
+  // Вариант со скриншотом CRM — как карточки «Готовое решение» на главной:
+  // чёрно-белый, при наведении цветной. Если скриншота нет, выводим иконку (без модификатора).
+  &__media--shot {
+    &::before { display: none; }
+    img { width: 100%; max-width: none; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(1); transition: filter .4s, transform .6s cubic-bezier(.2, .7, .2, 1); }
+    &::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, .15); pointer-events: none; }
+  }
+
   // При наведении — затемнение с пунктирным кругом «Читать кейс», как на главной
   &__overlap {
     position: absolute; inset: 0; z-index: 3;
@@ -56,6 +64,8 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBo
   @media (hover: hover) {
     &__link:hover &__overlap { opacity: 1; }
     &__link:hover &__media img { transform: scale(1.08); }
+    &__link:hover &__media--shot img { filter: grayscale(0); transform: scale(1.04); }
+    &__link:hover &__media--shot &__overlap { background: rgba(0, 0, 0, .35); }
     &__link:hover &__media::before { opacity: .45; transform: scale(1.2); }
   }
 
