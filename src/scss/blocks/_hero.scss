@@ -33,13 +33,13 @@
   }
 
   &__desc {
-    grid-area: desc; margin: 0; max-width: 86rem;
+    grid-area: desc; margin: 0; max-width: 86rem; align-self: center;
     font-size: 2rem; line-height: 1.3; font-weight: 300;
     @include up($bp-lg) { font-size: 3.2rem; }
   }
 
   &__counter {
-    grid-area: counter; justify-self: end;
+    grid-area: counter; justify-self: end; align-self: center;
     display: flex; align-items: center; gap: 2.4rem; margin: 0;
     @include up($bp-lg) { gap: 3.2rem; }
     b { font: 400 6.4rem/1 $font-secondary; letter-spacing: -0.04em; @include up($bp-lg) { font-size: 11rem; } }
@@ -51,7 +51,7 @@
   &__cube {
     position: absolute; z-index: 0; pointer-events: none;
     right: -5rem; top: 16rem; width: 15rem; opacity: .85;
-    @include up($bp-lg) { right: 12rem; top: 34rem; width: 44rem; }
+    @include up($bp-lg) { right: 14rem; top: 37rem; width: 38rem; }
   }
   &__cube-small {
     position: absolute; z-index: 0; pointer-events: none;

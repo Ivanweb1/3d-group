@@ -33,7 +33,8 @@
     @include up($bp-lg) { grid-template-columns: repeat(3, 1fr); }
   }
   &__item {
-    position: relative; z-index: 0; overflow: hidden;
+    position: relative; z-index: 0; overflow: hidden; width: 100%; height: 100%;
+    border: 0; text-align: left; font: inherit; cursor: pointer;
     display: flex; flex-direction: column; justify-content: space-between; gap: 3.2rem;
     min-height: 16rem; padding: 2.4rem;
     border-radius: 2rem; background: $c-dark; color: $c-white;
@@ -43,7 +44,9 @@
       content: ''; position: absolute; inset: 0; z-index: -1;
       @include brand-gradient; opacity: 0; transition: opacity .4s;
     }
-    &:hover::before { opacity: 1; }
+    &:hover::before, &.is-active::before { opacity: 1; }
+    &:focus-visible { outline: .2rem solid $c-black; outline-offset: .3rem; }
+    &:disabled { cursor: default; opacity: .5; &::before { display: none; } }
   }
   &__num { font: 400 1.4rem/1 $font-secondary; opacity: .5; @include up($bp-lg) { font-size: 2rem; } }
   &__name { font: 400 2.2rem/1.2 $font-secondary; padding-right: 4rem; @include up($bp-lg) { font-size: 3.2rem; padding-right: 6rem; } }
@@ -56,6 +59,8 @@
     transition: stroke .3s, transform .4s cubic-bezier(.2, .7, .2, 1);
     @include up($bp-lg) { top: 3.2rem; right: 3.2rem; width: 9.6rem; height: 9.6rem; }
   }
+  &__item:disabled &__arrow { display: none; }
+  &__item.is-active &__icon,
   &__item:hover &__icon { stroke: $c-white; transform: scale(1.08) rotate(-4deg); }
 
   &__arrow {
@@ -63,5 +68,11 @@
     opacity: 0; transform: translateX(-1rem); transition: opacity .3s, transform .3s;
     @include up($bp-lg) { right: 3.2rem; bottom: 3.2rem; width: 4rem; height: 4rem; }
   }
-  &__item:hover &__arrow { opacity: 1; transform: none; }
+  &__item:hover &__arrow, &__item.is-active &__arrow { opacity: 1; transform: none; }
+
+  // Сколько кейсов с этой задачей
+  &__count {
+    margin-top: -2rem; font: 400 1.4rem/1.2 $font-secondary; opacity: .6;
+    @include up($bp-lg) { font-size: 1.8rem; margin-top: -2.4rem; }
+  }
 }

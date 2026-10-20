@@ -29,6 +29,15 @@ export function initAnimations() {
     });
   });
 
+  // Кубы, которые только поворачиваются при скролле (data-rotate — угол)
+  gsap.utils.toArray('[data-rotate]').forEach((el) => {
+    gsap.to(el, {
+      rotate: parseFloat(el.dataset.rotate) || 20,
+      ease: 'none',
+      scrollTrigger: { trigger: el.parentElement, start: 'top top', end: 'bottom top', scrub: true },
+    });
+  });
+
   // Высота страницы меняется (фильтр кейсов, загрузка шрифтов и картинок) —
   // пересчитываем точки срабатывания, иначе нижние блоки могут так и не появиться
   let timer;
