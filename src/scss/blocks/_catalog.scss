@@ -72,7 +72,9 @@
     font: 400 1.2rem/1.2 $font-secondary; text-transform: uppercase; letter-spacing: .02em; color: rgba($c-white, .45);
     @include up($bp-lg) { font-size: 1.5rem; }
   }
-  &__block--format { flex-shrink: 0; .filter__group { display: inline-flex; } @include down($bp-md) { .filter__group { display: flex; } .dropdown__toggle { width: 100%; justify-content: space-between; } } }
+  &__block--format { flex-shrink: 0; position: relative; z-index: 5;
+    // выпадающий список не должен обрезаться прокруткой ряда
+    .filter__group { overflow: visible; -webkit-mask-image: none; mask-image: none; } .filter__group { display: inline-flex; } @include down($bp-md) { .filter__group { display: flex; } .dropdown__toggle { width: 100%; justify-content: space-between; } } }
 
   // На телефоне ряд кнопок листается пальцем; край затухает — видно, что есть продолжение
   @include down($bp-md) {
