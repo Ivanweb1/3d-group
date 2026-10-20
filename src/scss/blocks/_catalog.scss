@@ -60,9 +60,28 @@
   margin-top: 3.2rem;
   @include up($bp-lg) { margin-top: 6rem; }
 
+  display: grid; gap: 2rem;
+  @include up($bp-lg) { gap: 3.2rem; }
+
   &__row {
-    display: flex; justify-content: space-between; align-items: flex-start; gap: 1.2rem;
-    @include down($bp-xl) { flex-direction: column; }
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem;
+    @include down($bp-md) { flex-direction: column; align-items: stretch; }
+  }
+  &__block { display: grid; justify-items: start; gap: 1rem; min-width: 0; @include up($bp-lg) { gap: 1.4rem; } > * { max-width: 100%; } @include down($bp-md) { justify-items: stretch; } }
+  &__caption {
+    font: 400 1.2rem/1.2 $font-secondary; text-transform: uppercase; letter-spacing: .02em; color: rgba($c-white, .45);
+    @include up($bp-lg) { font-size: 1.5rem; }
+  }
+  &__block--format { flex-shrink: 0; .filter__group { display: inline-flex; } @include down($bp-md) { .filter__group { display: flex; } .dropdown__toggle { width: 100%; justify-content: space-between; } } }
+
+  // На телефоне ряд кнопок листается пальцем; край затухает — видно, что есть продолжение
+  @include down($bp-md) {
+    &__scroll, &__tags {
+      flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
+      -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+      mask-image: linear-gradient(90deg, #000 85%, transparent);
+      &::-webkit-scrollbar { display: none; }
+    }
   }
   &__group {
     display: flex; flex-wrap: wrap; padding: .6rem;
@@ -79,20 +98,19 @@
     transition: color .2s;
     @include up($bp-lg) { padding: 2rem 2.4rem; font-size: 1.8rem; }
     &::before { content: ''; position: absolute; inset: 0; z-index: -1; @include brand-gradient; opacity: 0; transition: opacity .3s; }
-    &:hover { color: $c-white; }
+    @media (hover: hover) { &:hover { color: $c-white; } }
     &.is-active { color: $c-white; &::before { opacity: 1; } }
     sup { margin-left: .4rem; font-size: .65em; vertical-align: top; opacity: .8; }
   }
 
   &__format { align-items: center; flex-wrap: nowrap; flex-shrink: 0; }
-  &__label { padding-left: 1.8rem; font: 400 1.5rem $font-secondary; color: rgba($c-white, .6); @include up($bp-lg) { font-size: 1.8rem; } }
 
 
   &__active {
-    display: inline-flex; align-items: center; gap: 1.2rem; margin-top: 1.2rem;
+    display: inline-flex; justify-self: start; align-items: center; gap: 1.2rem;
     padding: 1rem 1rem 1rem 2rem; border-radius: 10rem; position: relative; z-index: 0; overflow: hidden;
     font: 400 1.5rem/1.3 $font-secondary; color: $c-white;
-    @include up($bp-lg) { margin-top: 2.4rem; font-size: 1.8rem; }
+    @include up($bp-lg) { font-size: 1.8rem; }
     &[hidden] { display: none; }
     &::before { content: ''; position: absolute; inset: 0; z-index: -1; @include brand-gradient; }
     b { font-weight: 500; }
@@ -103,7 +121,7 @@
     }
   }
 
-  &__tags { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.2rem; @include up($bp-lg) { margin-top: 2.4rem; } }
+  &__tags { display: flex; flex-wrap: wrap; gap: .8rem; @include down($bp-md) { flex-wrap: nowrap; } }
   &__tag {
     position: relative; z-index: 0; overflow: hidden;
     padding: 1.4rem 2rem; border: .1rem solid rgba($c-white, .16); border-radius: 1.8rem; background: none;
@@ -111,7 +129,8 @@
     transition: color .2s, border-color .2s;
     @include up($bp-lg) { padding: 2.2rem 3.2rem; font-size: 1.8rem; }
     &::before { content: ''; position: absolute; inset: 0; z-index: -1; @include brand-gradient; opacity: 0; transition: opacity .3s; }
-    &:hover { color: $c-white; border-color: rgba($c-white, .4); }
+    flex-shrink: 0; white-space: nowrap;
+    @media (hover: hover) { &:hover { color: $c-white; border-color: rgba($c-white, .4); } }
     &.is-active { color: $c-white; border-color: transparent; &::before { opacity: 1; } }
   }
 }

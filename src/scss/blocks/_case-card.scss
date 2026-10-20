@@ -125,11 +125,14 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBo
     &__row {
       grid-template-columns: 1fr;
       &::before { display: none; }
-      dt { padding: 1.6rem 2.4rem .4rem; color: $c-gray; }
-      dd { grid-column: 1; grid-row: 2; margin: 0 2.4rem 1.6rem; color: $c-black; -webkit-line-clamp: 6; }
+      font-size: 1.2rem; line-height: 1.35;
+      dt { padding: 1.2rem 2rem .2rem; font-size: 1.1rem; color: $c-gray; }
+      dd { grid-column: 1; grid-row: 2; margin: 0 2rem 1.2rem; color: $c-black; -webkit-line-clamp: 6; }
     }
-    &__title { -webkit-line-clamp: 3; }
-    &__head { padding: 2rem 2rem 1.4rem; }
+    &__list li + li::before { width: .6rem; height: .6rem; margin: -.2rem .8rem 0; }
+    &__title { font-size: 1.8rem; -webkit-line-clamp: 3; }
+    &__head { padding: 1.6rem 2rem 1.2rem; }
+    &__badge { padding: .6rem 1.2rem; font-size: 1.2rem; svg { width: 1.6rem; height: 1.6rem; } }
   }
 }
 

@@ -114,11 +114,36 @@
           </div>
         </div>
 
-        <h2 class="catalog__subtitle" data-split>Или выберите сферу</h2>
+        <h2 class="catalog__subtitle" data-split>Или подберите по фильтрам</h2>
         <div class="filter">
           <div class="filter__row">
-            <div class="filter__group" role="group" aria-label="Сфера">
-              <button class="filter__btn is-active" type="button" data-sphere="all" aria-pressed="true">Все<sup data-count></sup></button>
+            <div class="filter__block">
+              <span class="filter__caption" id="dir-caption">Направление</span>
+              <div class="filter__tags" role="group" aria-labelledby="dir-caption">
+  <button class="filter__tag" type="button" data-tag="bitrix24" aria-pressed="false">Битрикс24</button>
+            <button class="filter__tag" type="button" data-tag="amocrm" aria-pressed="false">amoCRM</button>
+            <button class="filter__tag" type="button" data-tag="sites" aria-pressed="false">Разработка сайтов</button>
+              </div>
+            </div>
+            <div class="filter__block filter__block--format">
+              <span class="filter__caption" id="format-caption">Формат</span>
+              <div class="filter__group filter__format dropdown" data-dropdown>
+                <button class="dropdown__toggle" type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="format-caption format-value" data-dropdown-toggle>
+                  <span id="format-value" data-dropdown-value>Все</span>
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.5"/></svg>
+                </button>
+  <ul class="dropdown__menu" role="listbox" aria-labelledby="format-caption" tabindex="-1" data-dropdown-menu data-format-select>
+                <li class="dropdown__option" role="option" data-value="all" aria-selected="true">Все</li>
+                <li class="dropdown__option" role="option" data-value="individual" aria-selected="false">Индивидуальное внедрение</li>
+                <li class="dropdown__option" role="option" data-value="ready" aria-selected="false">Готовое решение</li>
+              </ul>
+              </div>
+            </div>
+          </div>
+          <div class="filter__block">
+            <span class="filter__caption" id="sphere-caption">Сфера клиента</span>
+            <div class="filter__group filter__scroll" role="group" aria-labelledby="sphere-caption">
+  <button class="filter__btn is-active" type="button" data-sphere="all" aria-pressed="true">Все<sup data-count></sup></button>
               <button class="filter__btn" type="button" data-sphere="retail" aria-pressed="false">Торговля</button>
               <button class="filter__btn" type="button" data-sphere="production" aria-pressed="false">Производство</button>
               <button class="filter__btn" type="button" data-sphere="logistics" aria-pressed="false">Логистика</button>
@@ -127,27 +152,10 @@
               <button class="filter__btn" type="button" data-sphere="services" aria-pressed="false">Услуги</button>
               <button class="filter__btn" type="button" data-sphere="auto" aria-pressed="false">Авто</button>
             </div>
-            <div class="filter__group filter__format dropdown" data-dropdown>
-              <span class="filter__label" id="format-label">Формат:</span>
-              <button class="dropdown__toggle" type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="format-label format-value" data-dropdown-toggle>
-                <span id="format-value" data-dropdown-value>Все</span>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.5"/></svg>
-              </button>
-              <ul class="dropdown__menu" role="listbox" aria-labelledby="format-label" tabindex="-1" data-dropdown-menu data-format-select>
-                <li class="dropdown__option" role="option" data-value="all" aria-selected="true">Все</li>
-                <li class="dropdown__option" role="option" data-value="individual" aria-selected="false">Индивидуальное внедрение</li>
-                <li class="dropdown__option" role="option" data-value="ready" aria-selected="false">Готовое решение</li>
-              </ul>
-            </div>
           </div>
           <div class="filter__active" data-task-active hidden>
             <span>Задача: <b data-task-active-name></b></span>
             <button type="button" aria-label="Сбросить задачу" data-task-reset>×</button>
-          </div>
-          <div class="filter__tags" role="group" aria-label="Платформа">
-            <button class="filter__tag" type="button" data-tag="bitrix24" aria-pressed="false">Битрикс24</button>
-            <button class="filter__tag" type="button" data-tag="amocrm" aria-pressed="false">amoCRM</button>
-            <button class="filter__tag" type="button" data-tag="sites" aria-pressed="false">Разработка сайтов</button>
           </div>
         </div>
 

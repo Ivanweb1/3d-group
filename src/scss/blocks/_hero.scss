@@ -28,6 +28,8 @@
     @include up($bp-lg) { font-size: 21.5rem; margin: 2rem 0; }
   }
   &__title-clip { display: grid; overflow: hidden; }
+  // У крупной «К» в шрифте есть пустота слева — компенсируем, чтобы буква стояла по линии с текстом
+  &__title-word { margin-left: -.07em; }
   &__title-slide {
     grid-area: 1 / 1; display: flex; flex-direction: column; align-items: flex-start;
     padding: 1rem 0; white-space: nowrap;

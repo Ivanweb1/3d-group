@@ -41,7 +41,7 @@ export function initTitles() {
     gsap.to(word, {
       xPercent: 12,
       ease: 'none',
-      scrollTrigger: { trigger: title, start: 'top 30%', end: 'bottom top', scrub: true },
+      scrollTrigger: { trigger: title, start: 'top top', end: 'bottom top', scrub: true },
     });
   });
 }
