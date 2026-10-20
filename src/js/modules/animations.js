@@ -14,7 +14,7 @@ export function initAnimations() {
       opacity: 0,
       duration: 0.9,
       ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 90%' },
+      scrollTrigger: { trigger: el, start: 'top 90%', once: true },
     });
   });
 
@@ -28,4 +28,12 @@ export function initAnimations() {
       scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true },
     });
   });
+
+  // Высота страницы меняется (фильтр кейсов, загрузка шрифтов и картинок) —
+  // пересчитываем точки срабатывания, иначе нижние блоки могут так и не появиться
+  let timer;
+  new ResizeObserver(() => {
+    clearTimeout(timer);
+    timer = setTimeout(() => ScrollTrigger.refresh(), 100);
+  }).observe(document.body);
 }
