@@ -21,14 +21,22 @@
     @include up($bp-lg) { font-size: 2.2rem; text-align: right; max-width: 68rem; justify-self: end; }
   }
 
+  // Заголовок-карусель, как на главной: слайды лежат друг на друге и сменяются по диагонали
   &__title {
     @include title; grid-area: title; position: relative; z-index: 1;
-    font-size: 8rem; line-height: 1; letter-spacing: -0.04em;
+    font-size: 6rem; line-height: 1; letter-spacing: -0.04em;
+    @include up($bp-md) { font-size: 12rem; }
     @include up($bp-lg) { font-size: 21.5rem; margin: 2rem 0; }
+  }
+  &__title-clip { display: grid; overflow: hidden; }
+  &__title-slide {
+    grid-area: 1 / 1; display: flex; flex-direction: column; align-items: flex-start;
+    padding: 1rem 0; white-space: nowrap;
+    &:not(:first-child) { transform: translate(-100%, 100%); }
     small {
-      display: block; margin-top: 1.6rem;
+      display: block; margin-top: 1.2rem;
       font: 600 1.4rem/1.2 $font-primary; text-transform: none; letter-spacing: 0;
-      @include up($bp-lg) { display: inline-block; vertical-align: top; margin: 3rem 0 0 3rem; font-size: 2.4rem; }
+      @include up($bp-lg) { margin-top: 1.6rem; padding-left: .8rem; font-size: 2.4rem; }
     }
   }
 
@@ -50,8 +58,8 @@
   // Стеклянный куб сайта
   &__cube {
     position: absolute; z-index: 0; pointer-events: none;
-    right: -5rem; top: 16rem; width: 15rem; opacity: .85;
-    @include up($bp-lg) { right: 14rem; top: 37rem; width: 38rem; }
+    display: none;
+    @include up($bp-lg) { display: block; right: 14rem; top: 37rem; width: 38rem; }
   }
   &__cube-small {
     position: absolute; z-index: 0; pointer-events: none;
