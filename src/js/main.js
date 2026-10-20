@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const lenis = initSmoothScroll();
   initAnimations();
   initTitles();
-  initHeader();
+  initHeader({ lenis });
   initDropdowns();
   initCases({ lenis });
   initForms();

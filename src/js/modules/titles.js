@@ -6,21 +6,21 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Буквы проявляются в случайном порядке — как заголовки на главной 3d-group.space
+// Текст «печатается» слева направо — как заголовки на главной 3d-group.space
 function revealChars(chars, delay = 0) {
   return gsap.from(chars, {
     opacity: 0,
     duration: 0.6,
     ease: 'power1.out',
     delay,
-    stagger: { each: 0.035, from: 'random' },
+    stagger: { each: 0.03, from: 'start' },
   });
 }
 
 export function initTitles() {
   if (reduced()) return;
 
-  // Заголовки секций: побуквенно при прокрутке
+  // Заголовки секций печатаются при прокрутке
   document.querySelectorAll('[data-split]').forEach((el) => {
     const split = SplitText.create(el, { type: 'words,chars', aria: 'auto' });
     gsap.set(split.chars, { opacity: 0 });
@@ -28,7 +28,7 @@ export function initTitles() {
       trigger: el,
       start: 'top 90%',
       once: true,
-      onEnter: () => gsap.to(split.chars, { opacity: 1, duration: 0.6, ease: 'power1.out', stagger: { each: 0.035, from: 'random' } }),
+      onEnter: () => gsap.to(split.chars, { opacity: 1, duration: 0.4, ease: 'none', stagger: { each: 0.03, from: 'start' } }),
     });
   });
 

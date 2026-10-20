@@ -1,4 +1,4 @@
-export function initHeader() {
+export function initHeader({ lenis } = {}) {
   const burger = document.querySelector('[data-burger]');
   const nav = document.getElementById('mobile-nav');
   if (!burger || !nav) return;
@@ -6,6 +6,8 @@ export function initHeader() {
 
   const setOpen = (open) => {
     root.classList.toggle('is-nav-open', open);
+    // пока меню открыто, страница под ним не прокручивается
+    if (lenis) open ? lenis.stop() : lenis.start();
     burger.setAttribute('aria-expanded', String(open));
     burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
   };
