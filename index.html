@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D GROUP — внедрение Битрикс24</title>
+  <meta name="description" content="3D GROUP — официальный партнёр Битрикс24.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="/src/js/main.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container-fluid header__in">
+      <a class="header__logo" href="#">3D GROUP</a>
+      <nav class="header__nav">
+        <a class="header__nav-link" href="#services">Услуги</a>
+        <a class="header__nav-link" href="#solutions">Решения</a>
+        <a class="header__nav-link" href="#cases">Кейсы</a>
+        <a class="header__nav-link" href="#team">Команда</a>
+        <a class="header__nav-link" href="#feedback">Контакты</a>
+      </nav>
+      <a class="btn" href="#feedback-modal" data-fancybox>Оставить заявку</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container-fluid">
+        <h1 class="hero__title" data-reveal>Внедрение Битрикс24</h1>
+        <p class="hero__desc" data-reveal>Настроим и внедрим готовое решение для вашей сферы бизнеса.</p>
+      </div>
+    </section>
+
+    <section class="services section" id="services">
+      <div class="container-fluid">
+        <h2 class="section__title" data-reveal>Услуги</h2>
+        <div class="row">
+          <div class="col-lg-6" data-reveal><div class="card">Автоматизация продаж</div></div>
+          <div class="col-lg-6" data-reveal><div class="card">Интеграция с сервисами</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="solutions section" id="solutions">
+      <div class="container-fluid">
+        <h2 class="section__title" data-reveal>Готовые решения</h2>
+      </div>
+    </section>
+
+    <section class="cases section" id="cases">
+      <div class="cases__marquee" data-marquee>
+        <div class="cases__marquee-line">
+          <span class="cases__marquee-text">Кейсы</span>
+          <span class="cases__marquee-text">Кейсы</span>
+          <span class="cases__marquee-text">Кейсы</span>
+          <span class="cases__marquee-text">Кейсы</span>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="swiper cases__slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="card">Кейс 1</div></div>
+            <div class="swiper-slide"><div class="card">Кейс 2</div></div>
+            <div class="swiper-slide"><div class="card">Кейс 3</div></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team section" id="team">
+      <div class="container-fluid">
+        <h2 class="section__title" data-reveal>Команда</h2>
+      </div>
+    </section>
+
+    <section class="feedback section" id="feedback">
+      <div class="container-fluid">
+        <h2 class="section__title" data-reveal>Обсудим проект?</h2>
+        <form class="form">
+          <input class="ui-input" type="text" name="name" placeholder="Имя">
+          <input class="ui-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" data-mask>
+          <button class="btn" type="submit">Отправить</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container-fluid">© 3D GROUP</div>
+  </footer>
+
+  <div class="modal" id="feedback-modal" style="display:none">
+    <h3>Оставить заявку</h3>
+    <form class="form">
+      <input class="ui-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" data-mask>
+      <button class="btn" type="submit">Отправить</button>
+    </form>
+  </div>
+</body>
+</html>

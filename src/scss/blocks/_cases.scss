@@ -1,0 +1,11 @@
+@use '../variables' as *;
+
+.cases {
+  overflow: hidden;
+  &__marquee { margin-bottom: 40px; }
+  &__marquee-line { display: flex; gap: 48px; width: max-content; }
+  &__marquee-text { font-size: clamp(48px, 10vw, 160px); font-weight: 700; color: $color-surface; white-space: nowrap; }
+  &__slider { padding-bottom: 40px; }
+  .swiper-pagination-bullet { background: $color-muted; }
+  .swiper-pagination-bullet-active { background: $color-accent; }
+}

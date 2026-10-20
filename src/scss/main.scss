@@ -1,0 +1,8 @@
+// Bootstrap — только сетка (container/row/col), как на текущем сайте
+@use 'bootstrap/scss/bootstrap-grid';
+
+@use 'base';
+@use 'blocks/header';
+@use 'blocks/hero';
+@use 'blocks/cases';
+@use 'blocks/footer';

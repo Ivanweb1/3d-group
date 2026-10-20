@@ -1,0 +1,12 @@
+@use '../variables' as *;
+
+.header {
+  position: fixed; inset: 0 0 auto; z-index: 10;
+  backdrop-filter: blur(10px);
+  &__in { display: flex; align-items: center; gap: 32px; padding-block: 16px; }
+  &__logo { font-weight: 700; font-size: 20px; }
+  &__nav { display: none; gap: 24px; margin-left: auto;
+    @media (min-width: $bp-lg) { display: flex; } }
+  &__nav-link { color: $color-muted; &:hover { color: $color-text; } }
+  .btn { margin-left: auto; @media (min-width: $bp-lg) { margin-left: 0; } }
+}

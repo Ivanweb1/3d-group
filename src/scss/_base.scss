@@ -1,0 +1,41 @@
+@use 'variables' as *;
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+body {
+  margin: 0;
+  font-family: $font-main;
+  background: $color-bg;
+  color: $color-text;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.container-fluid { padding-inline: 16px; @media (min-width: $bp-lg) { padding-inline: 40px; } }
+
+.section { padding-block: 80px; }
+.section__title { margin: 0 0 40px; font-size: clamp(32px, 5vw, 64px); font-weight: 600; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 14px 28px; border: 0; border-radius: 40px;
+  background: $color-accent; color: $color-bg;
+  font: 600 16px/1 $font-main; cursor: pointer;
+  transition: opacity .2s;
+  &:hover { opacity: .85; }
+}
+
+.card { padding: 32px; border-radius: 24px; background: $color-surface; margin-bottom: 24px; }
+
+.ui-input {
+  width: 100%; padding: 16px 20px; margin-bottom: 16px;
+  border: 1px solid $color-surface; border-radius: 12px;
+  background: transparent; color: $color-text; font: 16px $font-main;
+}
+
+.modal { max-width: 480px; background: $color-bg; color: $color-text; border-radius: 24px; }
