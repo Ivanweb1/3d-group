@@ -7,6 +7,17 @@ export function initDropdowns() {
     const valueEl = root.querySelector('[data-dropdown-value]');
     const options = [...menu.querySelectorAll('[role="option"]')];
     let focused = Math.max(0, options.findIndex((o) => o.getAttribute('aria-selected') === 'true'));
+
+    // Кнопка шириной с раскрытый список, чтобы список не выпирал из-под неё
+    const fitWidth = () => {
+      root.style.minWidth = '';
+      menu.style.width = 'max-content';
+      root.style.minWidth = `${Math.ceil(menu.getBoundingClientRect().width)}px`;
+      menu.style.width = '';
+    };
+    fitWidth();
+    window.addEventListener('resize', fitWidth);
+    document.fonts?.ready.then(fitWidth);
     menu.value = options[focused]?.dataset.value;
 
     const focus = (i) => {
