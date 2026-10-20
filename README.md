@@ -1,5 +1,7 @@
 # 3D GROUP — вёрстка
 
+Посмотреть: https://ivanweb1.github.io/3d-group/cases.html (публикуется автоматически при пуше в `main`, закрыто от индексации).
+
 Страницы:
 - `cases.html` — «Кейсы» (по прототипу из Figma, `design-v1` в Releases)
 - `index.html` — заглушка главной
