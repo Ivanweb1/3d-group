@@ -15,9 +15,9 @@
   }
   &__title { @include title; grid-area: title; font-size: 3.2rem; @include up($bp-lg) { font-size: 7.7rem; letter-spacing: -0.035em; } }
   &__text {
-    grid-area: text; margin: 0; max-width: 85rem;
+    grid-area: text; margin: 0; max-width: none;
     font-size: 1.8rem; line-height: 1.2; font-weight: 300;
-    @include up($bp-lg) { font-size: 3.2rem; }
+    @include up($bp-lg) { font-size: 3.2rem; white-space: nowrap; }
   }
   &__mark {
     grid-area: mark; margin: 0;
