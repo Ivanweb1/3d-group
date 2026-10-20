@@ -10,10 +10,10 @@ const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matc
 function revealChars(chars, delay = 0) {
   return gsap.from(chars, {
     opacity: 0,
-    duration: 0.6,
+    duration: 1,
     ease: 'power1.out',
     delay,
-    stagger: { each: 0.03, from: 'start' },
+    stagger: { each: 0.06, from: 'start' },
   });
 }
 
@@ -28,7 +28,7 @@ export function initTitles() {
       trigger: el,
       start: 'top 90%',
       once: true,
-      onEnter: () => gsap.to(split.chars, { opacity: 1, duration: 0.4, ease: 'none', stagger: { each: 0.03, from: 'start' } }),
+      onEnter: () => gsap.to(split.chars, { opacity: 1, duration: 1, ease: 'power1.out', stagger: { each: 0.06, from: 'start' } }),
     });
   });
 
