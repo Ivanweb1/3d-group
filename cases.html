@@ -13,7 +13,7 @@
   <script type="module" src="/src/js/main.js"></script>
 </head>
 <body>
-  <header class="header" data-header>
+  <header class="header">
     <div class="container header__in">
       <a class="header__logo" href="./index.html" aria-label="3D GROUP — на главную">
 <svg width="273" height="53" aria-hidden="true" viewBox="0 0 273 53" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,114 +33,176 @@
 </svg>
       </a>
       <nav class="header__nav" aria-label="Главное меню">
-        <a class="header__link" href="#">Битрикс24 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></a>
-        <a class="header__link" href="#">amoCRM <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></a>
         <a class="header__link" href="#">Готовые решения</a>
         <a class="header__link" href="#">Индивидуальное внедрение</a>
-        <a class="header__link is-active" href="./cases.html">Кейсы</a>
+        <a class="header__link is-active" href="./cases.html" aria-current="page">Кейсы</a>
         <a class="header__link" href="#">О компании</a>
+        <a class="header__link header__link--underline" href="#feedback-modal" data-fancybox>Связаться</a>
       </nav>
-      <a class="header__contact" href="#feedback-modal" data-fancybox>Связаться</a>
-      <button class="header__burger" type="button" aria-label="Открыть меню" aria-expanded="false" data-burger><span></span><span></span><span></span></button>
+      <button class="header__burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-nav" data-burger><span></span><span></span><span></span></button>
     </div>
   </header>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Мобильное меню">
+    <a href="#">Готовые решения</a>
+    <a href="#">Индивидуальное внедрение</a>
+    <a href="./cases.html">Кейсы</a>
+    <a href="#">О компании</a>
+    <a href="#feedback-modal" data-fancybox>Связаться</a>
+  </nav>
 
   <main>
-    <section class="page-head">
-      <div class="container"><hr class="line"></div>
-      <div class="container page-head__in">
-        <div>
-          <h1 class="page-head__title" data-reveal>Кейсы 3D GROUP</h1>
-          <p class="page-head__desc" data-reveal>Показываем, как решаем реальные задачи бизнеса с помощью CRM, интеграций и автоматизации.</p>
-        </div>
-        <div class="page-head__aside" data-reveal>
-          <p class="page-head__note">В кейсах — задачи клиентов, реализованные решения и результат: от внедрения Битрикс24 и amoCRM до интеграций с 1С, разработки и технической поддержки.</p>
-        </div>
+    <section class="hero">
+      <img class="hero__cube" src="./src/assets/images/cube-big.webp" alt="" width="523" height="443" data-parallax="-0.25">
+      <img class="hero__cube-small" src="./src/assets/images/cube-small.webp" alt="" width="334" height="323" data-parallax="0.35">
+      <div class="container hero__in">
+        <span class="hero__copy">© 3D GROUP</span>
+        <span class="hero__year">2010 — 2025</span>
+        <p class="hero__quote" data-reveal>В кейсах — задачи клиентов, реализованные решения и результат: от внедрения Битрикс24 и amoCRM до интеграций с 1С, разработки и технической поддержки.</p>
+        <h1 class="hero__title" data-reveal>Кейсы<small>3D GROUP</small></h1>
+        <p class="hero__desc" data-reveal>Показываем, как решаем реальные задачи бизнеса с помощью CRM, интеграций и автоматизации.</p>
+        <p class="hero__counter" data-reveal><b>350+</b><span>наших проектов — это не просто цифра, это доверие</span></p>
       </div>
-      <hr class="line">
+      <div class="container"><hr class="hero__line"></div>
     </section>
 
     <section class="tasks">
       <div class="container">
-        <p class="eyebrow">Решение и ценность</p>
-        <h2 class="h2" data-reveal>Какие задачи мы уже решали</h2>
+        <div class="tasks__head">
+          <h2 class="tasks__title" data-reveal>Какие задачи мы уже решали</h2>
+          <p class="tasks__text" data-reveal>От первого внедрения до развития системы, которая уже работает.</p>
+          <p class="tasks__mark">Решение и ценность</p>
+        </div>
         <ul class="tasks__list">
-          <li class="tasks__item" data-reveal><span class="tasks__icon" aria-hidden="true"></span>Внедрение CRM с нуля</li>
-          <li class="tasks__item" data-reveal><span class="tasks__icon" aria-hidden="true"></span>Перенос из другой CRM</li>
-          <li class="tasks__item" data-reveal><span class="tasks__icon" aria-hidden="true"></span>Интеграция с 1С</li>
-          <li class="tasks__item" data-reveal><span class="tasks__icon" aria-hidden="true"></span>Автоматизация продаж</li>
-          <li class="tasks__item" data-reveal><span class="tasks__icon" aria-hidden="true"></span>Автоматизация внутренних процессов</li>
-          <li class="tasks__item" data-reveal><span class="tasks__icon" aria-hidden="true"></span>Подключение телефонии и мессенджеров</li>
-          <li class="tasks__item" data-reveal><span class="tasks__icon" aria-hidden="true"></span>Интеграция сайта и CRM</li>
-          <li class="tasks__item" data-reveal><span class="tasks__icon" aria-hidden="true"></span>Настройка аналитики</li>
-          <li class="tasks__item" data-reveal><span class="tasks__icon" aria-hidden="true"></span>Развитие существующей системы</li>
+          <li class="tasks__item" data-reveal><span class="tasks__num">01</span><span class="tasks__name">Внедрение CRM с нуля</span></li>
+          <li class="tasks__item" data-reveal><span class="tasks__num">02</span><span class="tasks__name">Перенос из другой CRM</span></li>
+          <li class="tasks__item" data-reveal><span class="tasks__num">03</span><span class="tasks__name">Интеграция с 1С</span></li>
+          <li class="tasks__item" data-reveal><span class="tasks__num">04</span><span class="tasks__name">Автоматизация продаж</span></li>
+          <li class="tasks__item" data-reveal><span class="tasks__num">05</span><span class="tasks__name">Автоматизация внутренних процессов</span></li>
+          <li class="tasks__item" data-reveal><span class="tasks__num">06</span><span class="tasks__name">Подключение телефонии и мессенджеров</span></li>
+          <li class="tasks__item" data-reveal><span class="tasks__num">07</span><span class="tasks__name">Интеграция сайта и CRM</span></li>
+          <li class="tasks__item" data-reveal><span class="tasks__num">08</span><span class="tasks__name">Настройка аналитики</span></li>
+          <li class="tasks__item" data-reveal><span class="tasks__num">09</span><span class="tasks__name">Развитие существующей системы</span></li>
         </ul>
       </div>
     </section>
 
-    <section class="case-search" id="cases">
-      <div class="container case-search__in">
-        <h2 class="h3" data-reveal>Найдите кейс по вашей задаче</h2>
-        <form class="case-search__bar" role="search" data-search>
-          <label class="case-search__field">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m21 21-4.35-4.35M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            <span class="visually-hidden">Поиск по кейсам</span>
-            <input class="case-search__input" type="search" name="q" placeholder="Поиск по ключевым словам" autocomplete="off" data-search-input>
-          </label>
-          <button class="case-search__btn" type="submit">Показать похожие кейсы</button>
-        </form>
-        <div class="case-search__hints">
-          <button class="case-search__hint" type="button" data-hint="crm"><img src="./src/assets/images/hint-funnel.png" alt="" width="75" height="75" loading="lazy">Воронка продаж и закупок</button>
-          <button class="case-search__hint" type="button" data-hint="телефония"><img src="./src/assets/images/hint-telephony.png" alt="" width="75" height="75" loading="lazy">Телефония и мессенджеры</button>
-          <button class="case-search__hint" type="button" data-hint="СБИС"><img src="./src/assets/images/hint-sbis.png" alt="" width="75" height="75" loading="lazy">Интеграция СБИС</button>
-        </div>
-      </div>
-
+    <section class="catalog" id="cases">
+      <img class="catalog__cube catalog__cube--1" src="./src/assets/images/cube.webp" alt="" width="800" height="678" loading="lazy" data-parallax="-0.3">
+      <img class="catalog__cube catalog__cube--2" src="./src/assets/images/cube.webp" alt="" width="800" height="678" loading="lazy" data-parallax="0.2">
       <div class="container">
-        <h2 class="h3" style="margin-top:80px" data-reveal>Или выберите сферу</h2>
-        <div class="case-filter">
-          <div class="case-filter__row">
-            <div class="case-filter__group" role="group" aria-label="Сфера">
-            <button class="case-filter__btn is-active" type="button" data-sphere="all" aria-pressed="true">Все<sup data-count></sup></button>
-            <button class="case-filter__btn" type="button" data-sphere="ecommerce" aria-pressed="false">e-Commerce</button>
-            <button class="case-filter__btn" type="button" data-sphere="corporate" aria-pressed="false">Корпоративные сайты</button>
-            <button class="case-filter__btn" type="button" data-sphere="industry" aria-pressed="false">Промышленность</button>
-            <button class="case-filter__btn" type="button" data-sphere="3d" aria-pressed="false">3D</button>
-            <button class="case-filter__btn" type="button" data-sphere="creative" aria-pressed="false">Creative</button>
-            <button class="case-filter__btn" type="button" data-sphere="production" aria-pressed="false">Производство</button>
-            <button class="case-filter__btn" type="button" data-sphere="finance" aria-pressed="false">Финансы</button>
-            <button class="case-filter__btn" type="button" data-sphere="realty" aria-pressed="false">Недвижимость</button>
-            <button class="case-filter__btn" type="button" data-sphere="it" aria-pressed="false">IT</button>
+        <span class="catalog__mark">Кейсы</span>
+        <h2 class="catalog__title" data-reveal>Найдите кейс по вашей задаче</h2>
+
+        <div class="catalog__search">
+          <form class="catalog__bar" role="search" data-search>
+            <label class="catalog__field">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m21 21-4.35-4.35M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <span class="visually-hidden">Поиск по кейсам</span>
+              <input class="catalog__input" type="search" name="q" placeholder="Поиск по ключевым словам" autocomplete="off" data-search-input>
+            </label>
+            <button class="ui-btn ui-btn--gradient" type="submit">Показать похожие кейсы</button>
+          </form>
+          <div class="catalog__hints">
+          <button class="catalog__hint" type="button" data-hint="продаж"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8247ed"/><stop offset="1" stop-color="#eb8f73"/></linearGradient></defs><path fill="url(#gf)" d="M4 8h40l-14 16v14l-12 6V24L4 8Z"/></svg>Воронка продаж и закупок</button>
+          <button class="catalog__hint" type="button" data-hint="телефония"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="gc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8247ed"/><stop offset="1" stop-color="#eb8f73"/></linearGradient></defs><path fill="url(#gc)" d="M8 6h32a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H20l-10 8v-8H8a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4Zm6 10v4h20v-4H14Zm0 8v3h12v-3H14Z"/></svg>Телефония и мессенджеры</button>
+          <button class="catalog__hint" type="button" data-hint="СБИС"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8247ed"/><stop offset="1" stop-color="#eb8f73"/></linearGradient></defs><path fill="url(#gd)" d="M10 4h20l10 10v30H10V4Zm19 2v9h9L29 6ZM16 30.5l2.8-2.8 4.2 4.2 8.2-8.2 2.8 2.8L23 37.5l-7-7Z"/></svg>Интеграция СБИС</button>
+          </div>
+        </div>
+
+        <h2 class="catalog__subtitle" data-reveal>Или выберите сферу</h2>
+        <div class="filter">
+          <div class="filter__row">
+            <div class="filter__group" role="group" aria-label="Сфера">
+              <button class="filter__btn is-active" type="button" data-sphere="all" aria-pressed="true">Все<sup data-count></sup></button>
+              <button class="filter__btn" type="button" data-sphere="retail" aria-pressed="false">Торговля</button>
+              <button class="filter__btn" type="button" data-sphere="production" aria-pressed="false">Производство</button>
+              <button class="filter__btn" type="button" data-sphere="logistics" aria-pressed="false">Логистика</button>
+              <button class="filter__btn" type="button" data-sphere="finance" aria-pressed="false">Финансы</button>
+              <button class="filter__btn" type="button" data-sphere="law" aria-pressed="false">Юриспруденция</button>
+              <button class="filter__btn" type="button" data-sphere="services" aria-pressed="false">Услуги</button>
+              <button class="filter__btn" type="button" data-sphere="auto" aria-pressed="false">Авто</button>
             </div>
-            <label class="case-filter__group case-filter__format">
-              <span class="case-filter__label">Формат:</span>
-              <select class="case-filter__select" data-format-select>
+            <label class="filter__group filter__format">
+              <span class="filter__label">Формат:</span>
+              <select class="filter__select" data-format-select>
                 <option value="all">Все</option>
-                <option value="implementation">Внедрение</option>
-                <option value="integration">Интеграция</option>
-                <option value="development">Разработка</option>
-                <option value="support">Поддержка</option>
+                <option value="individual">Индивидуальное внедрение</option>
+                <option value="ready">Готовое решение</option>
               </select>
             </label>
           </div>
-          <div class="case-filter__tags" role="group" aria-label="Платформа">
-            <button class="case-filter__tag" type="button" data-tag="bitrix24" aria-pressed="false">Битрикс24</button>
-            <button class="case-filter__tag" type="button" data-tag="amocrm" aria-pressed="false">amoCRM</button>
-            <button class="case-filter__tag" type="button" data-tag="sites" aria-pressed="false">Разработка сайтов</button>
+          <div class="filter__tags" role="group" aria-label="Платформа">
+            <button class="filter__tag" type="button" data-tag="bitrix24" aria-pressed="false">Битрикс24</button>
+            <button class="filter__tag" type="button" data-tag="amocrm" aria-pressed="false">amoCRM</button>
+            <button class="filter__tag" type="button" data-tag="sites" aria-pressed="false">Разработка сайтов</button>
           </div>
         </div>
 
         <div class="cases-grid" data-cases>
-        <article class="case-card" data-case data-sphere="finance" data-tags="bitrix24" data-format="implementation">
-          <a class="case-card__link" href="#">
+        <article class="case-card" data-case data-sphere="logistics" data-format="individual" data-tags="bitrix24">
+          <a class="case-card__link" href="https://3d-group.space/cases/stratum-oak/">
             <div class="case-card__media">
-              <img src="./src/assets/images/case-1.jpg" alt="Юрист работает за ноутбуком" loading="lazy" width="884" height="351">
+              <img src="./src/assets/images/cases/logistics.png" alt="" width="150" height="150" loading="lazy">
               <div class="case-card__badges">
-                <span class="case-card__badge">Банкротство физических лиц</span>
-                <span class="case-card__badge case-card__badge--blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87ZM15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24Zm-6 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2Zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1Z"/></svg>11 клиентов</span>
+                <span class="case-card__badge case-card__badge--accent"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87ZM15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24Zm-6 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2Zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1Z"/></svg>15 рабочих мест</span>
               </div>
-              <span class="case-card__more">Узнать больше <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              <span class="case-card__overlap">Читать кейс</span>
             </div>
+            <div class="case-card__head"><h3 class="case-card__title">Логистика</h3></div>
+            <dl class="case-card__info">
+              <div class="case-card__row">
+                <dt>Отрасль</dt>
+                <dd>Логистическая компания</dd>
+              </div>
+            </dl>
+          </a>
+        </article>
+        <article class="case-card" data-case data-sphere="production" data-format="individual" data-tags="bitrix24">
+          <a class="case-card__link" href="https://3d-group.space/cases/tehanalog/">
+            <div class="case-card__media">
+              <img src="./src/assets/images/cases/diamond.png" alt="" width="150" height="150" loading="lazy">
+              <div class="case-card__badges">
+                <span class="case-card__badge case-card__badge--accent"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87ZM15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24Zm-6 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2Zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1Z"/></svg>25 рабочих мест</span>
+              </div>
+              <span class="case-card__overlap">Читать кейс</span>
+            </div>
+            <div class="case-card__head"><h3 class="case-card__title">Продажа алмазного оборудования</h3></div>
+            <dl class="case-card__info">
+              <div class="case-card__row">
+                <dt>Отрасль</dt>
+                <dd>Производственная компания</dd>
+              </div>
+            </dl>
+          </a>
+        </article>
+        <article class="case-card" data-case data-sphere="retail" data-format="individual" data-tags="bitrix24">
+          <a class="case-card__link" href="https://3d-group.space/cases/ekipirvovka-ekspert/">
+            <div class="case-card__media">
+              <img src="./src/assets/images/cases/gear.png" alt="" width="150" height="150" loading="lazy">
+              <div class="case-card__badges">
+                <span class="case-card__badge case-card__badge--accent"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87ZM15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24Zm-6 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2Zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1Z"/></svg>12 рабочих мест</span>
+              </div>
+              <span class="case-card__overlap">Читать кейс</span>
+            </div>
+            <div class="case-card__head"><h3 class="case-card__title">Продажа военной экипировки</h3></div>
+            <dl class="case-card__info">
+              <div class="case-card__row">
+                <dt>Отрасль</dt>
+                <dd>Магазин экипировки</dd>
+              </div>
+            </dl>
+          </a>
+        </article>
+        <article class="case-card" data-case data-sphere="law" data-format="individual" data-tags="bitrix24">
+          <a class="case-card__link" href="https://3d-group.space/cases/fabula-dela/">
+            <div class="case-card__media">
+              <img src="./src/assets/images/cases/bankruptcy.png" alt="" width="150" height="150" loading="lazy">
+              <div class="case-card__badges">
+                <span class="case-card__badge case-card__badge--accent"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87ZM15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24Zm-6 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2Zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1Z"/></svg>14 рабочих мест</span>
+              </div>
+              <span class="case-card__overlap">Читать кейс</span>
+            </div>
+            <div class="case-card__head"><h3 class="case-card__title">Банкротство физических лиц</h3></div>
             <dl class="case-card__info">
               <div class="case-card__row">
                 <dt>Отрасль</dt>
@@ -157,108 +219,108 @@
             </dl>
           </a>
         </article>
-        <article class="case-card" data-case data-sphere="finance" data-tags="bitrix24" data-format="implementation">
-          <a class="case-card__link" href="#">
+        <article class="case-card" data-case data-sphere="retail" data-format="individual" data-tags="bitrix24">
+          <a class="case-card__link" href="https://3d-group.space/cases/hunt-optic/">
             <div class="case-card__media">
-              <img src="./src/assets/images/case-2.jpg" alt="Юрист работает за ноутбуком" loading="lazy" width="884" height="351">
+              <img src="./src/assets/images/cases/outdoor.png" alt="" width="150" height="150" loading="lazy">
               <div class="case-card__badges">
-                <span class="case-card__badge">Банкротство физических лиц</span>
-                <span class="case-card__badge case-card__badge--blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87ZM15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24Zm-6 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2Zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1Z"/></svg>11 клиентов</span>
+                <span class="case-card__badge case-card__badge--accent"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87ZM15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24Zm-6 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2Zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1Z"/></svg>10 рабочих мест</span>
               </div>
-              <span class="case-card__more">Узнать больше <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              <span class="case-card__overlap">Читать кейс</span>
             </div>
+            <div class="case-card__head"><h3 class="case-card__title">Продажа товаров для активного отдыха</h3></div>
             <dl class="case-card__info">
               <div class="case-card__row">
                 <dt>Отрасль</dt>
-                <dd>Компании, сопровождающие процедуры банкротства</dd>
-              </div>
-              <div class="case-card__row">
-                <dt>Решение</dt>
-                <dd><ul class="case-card__list"><li>CRM</li><li>сайт</li><li>автоматизация бизнес-процессов</li></ul></dd>
-              </div>
-              <div class="case-card__row">
-                <dt>Проверено</dt>
-                <dd><ul class="case-card__list"><li>23 внедрения</li><li>14 автоматизированных процессов</li><li>5 интеграций</li></ul></dd>
+                <dd>Магазин охоты и рыбалки</dd>
               </div>
             </dl>
           </a>
         </article>
-        <article class="case-card" data-case data-sphere="finance" data-tags="bitrix24" data-format="implementation">
-          <a class="case-card__link" href="#">
+        <article class="case-card" data-case data-sphere="finance" data-format="individual" data-tags="bitrix24">
+          <a class="case-card__link" href="https://3d-group.space/cases/germes-finans/">
             <div class="case-card__media">
-              <img src="./src/assets/images/case-3.jpg" alt="Юрист работает за ноутбуком" loading="lazy" width="884" height="351">
+              <img src="./src/assets/images/cases/finance.png" alt="" width="150" height="150" loading="lazy">
               <div class="case-card__badges">
-                <span class="case-card__badge">Банкротство физических лиц</span>
-                <span class="case-card__badge case-card__badge--blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87ZM15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24Zm-6 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2Zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1Z"/></svg>11 клиентов</span>
+                <span class="case-card__badge case-card__badge--accent"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87ZM15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24Zm-6 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2Zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1Z"/></svg>10 рабочих мест</span>
               </div>
-              <span class="case-card__more">Узнать больше <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              <span class="case-card__overlap">Читать кейс</span>
             </div>
+            <div class="case-card__head"><h3 class="case-card__title">Финансы</h3></div>
             <dl class="case-card__info">
               <div class="case-card__row">
                 <dt>Отрасль</dt>
-                <dd>Компании, сопровождающие процедуры банкротства</dd>
-              </div>
-              <div class="case-card__row">
-                <dt>Решение</dt>
-                <dd><ul class="case-card__list"><li>CRM</li><li>сайт</li><li>автоматизация бизнес-процессов</li></ul></dd>
-              </div>
-              <div class="case-card__row">
-                <dt>Проверено</dt>
-                <dd><ul class="case-card__list"><li>23 внедрения</li><li>14 автоматизированных процессов</li><li>5 интеграций</li></ul></dd>
+                <dd>Финансовый брокер</dd>
               </div>
             </dl>
           </a>
         </article>
-        <article class="case-card" data-case data-sphere="finance" data-tags="bitrix24" data-format="implementation">
-          <a class="case-card__link" href="#">
+        <article class="case-card" data-case data-sphere="services" data-format="individual" data-tags="bitrix24">
+          <a class="case-card__link" href="https://3d-group.space/cases/khitryy-lis/">
             <div class="case-card__media">
-              <img src="./src/assets/images/case-4.jpg" alt="Юрист работает за ноутбуком" loading="lazy" width="884" height="351">
+              <img src="./src/assets/images/cases/party.png" alt="" width="150" height="150" loading="lazy">
               <div class="case-card__badges">
-                <span class="case-card__badge">Банкротство физических лиц</span>
-                <span class="case-card__badge case-card__badge--blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87ZM15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24Zm-6 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2Zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1Z"/></svg>11 клиентов</span>
+                <span class="case-card__badge case-card__badge--accent"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87ZM15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24Zm-6 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2Zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1Z"/></svg>50 рабочих мест</span>
               </div>
-              <span class="case-card__more">Узнать больше <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              <span class="case-card__overlap">Читать кейс</span>
             </div>
+            <div class="case-card__head"><h3 class="case-card__title">Организация праздников</h3></div>
             <dl class="case-card__info">
               <div class="case-card__row">
                 <dt>Отрасль</dt>
-                <dd>Компании, сопровождающие процедуры банкротства</dd>
+                <dd>Игровой центр</dd>
               </div>
-              <div class="case-card__row">
-                <dt>Решение</dt>
-                <dd><ul class="case-card__list"><li>CRM</li><li>сайт</li><li>автоматизация бизнес-процессов</li></ul></dd>
+            </dl>
+          </a>
+        </article>
+        <article class="case-card" data-case data-sphere="auto" data-format="individual" data-tags="bitrix24">
+          <a class="case-card__link" href="https://3d-group.space/cases/formula-avto/">
+            <div class="case-card__media">
+              <img src="./src/assets/images/cases/auto.png" alt="" width="150" height="150" loading="lazy">
+              <div class="case-card__badges">
+                <span class="case-card__badge case-card__badge--accent"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87ZM15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24Zm-6 0c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2Zm0 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Zm6 5H3v-.99C3.2 16.29 6.3 15 9 15s5.8 1.29 6 2v1Z"/></svg>8 рабочих мест</span>
               </div>
+              <span class="case-card__overlap">Читать кейс</span>
+            </div>
+            <div class="case-card__head"><h3 class="case-card__title">Продажа авто</h3></div>
+            <dl class="case-card__info">
               <div class="case-card__row">
-                <dt>Проверено</dt>
-                <dd><ul class="case-card__list"><li>23 внедрения</li><li>14 автоматизированных процессов</li><li>5 интеграций</li></ul></dd>
+                <dt>Отрасль</dt>
+                <dd>Автосалон</dd>
               </div>
             </dl>
           </a>
         </article>
           <p class="cases-grid__empty" data-cases-empty hidden>По вашему запросу кейсов не найдено</p>
+          <div class="place-card">
+            <img class="place-card__cube" src="./src/assets/images/cube-small.webp" alt="" width="334" height="323" loading="lazy">
+            <p class="place-card__title">Место для вашей компании</p>
+            <a class="place-card__btn" href="#feedback-modal" data-fancybox>Обсудить проект <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></a>
+          </div>
         </div>
       </div>
     </section>
-  </main>
-
-  <section class="cta" id="feedback">
-    <h2 class="cta__title" data-reveal>Нужна интеграция с сервисом?</h2>
-    <p class="cta__desc" data-reveal>Оставьте свой номер телефона для связи</p>
-    <form class="form" data-form>
-      <div class="form__fields">
-            <label><span class="visually-hidden">Как к вам обращаться</span><input class="form__input" type="text" name="name" placeholder="Как к вам обращаться *" required></label>
-            <label><span class="visually-hidden">Телефон</span><input class="form__input" type="tel" name="phone" placeholder="Телефон *" required data-mask></label>
+    <section class="feedback" id="feedback">
+    <div class="container">
+      <h2 class="feedback__title" data-reveal>Нужна интеграция с сервисом?</h2>
+      <p class="feedback__text" data-reveal>Оставьте свой номер телефона для связи</p>
+      <form class="form" data-form>
+          <div class="form__fields">
+            <label class="ui-field"><input class="ui-field__input" type="text" name="name" placeholder=" " required><span class="ui-field__label">Как к вам обращаться&nbsp;<sup>*</sup></span></label>
+            <label class="ui-field"><input class="ui-field__input" type="tel" name="phone" placeholder=" " required data-mask><span class="ui-field__label">Телефон&nbsp;<sup>*</sup></span></label>
           </div>
           <div class="form__bottom">
-            <label class="form__check"><input type="checkbox" name="agree" required checked> <span>Согласен и ознакомлен c <a href="#">политикой конфиденциальности</a> и обработкой персональных данных</span></label>
-            <button class="form__submit" type="submit">отправить</button>
+            <label class="ui-check"><input class="ui-check__input" type="checkbox" name="agree" required checked><span class="ui-check__box"></span><span class="ui-check__text">Согласен и ознакомлен с <a href="#">политикой конфиденциальности</a> и обработкой персональных данных</span></label>
+            <button class="ui-btn ui-btn--dark" type="submit">Отправить</button>
           </div>
-    </form>
+      </form>
+    </div>
   </section>
+  </main>
 
   <footer class="footer">
-    <div class="container">
-      <div class="footer__top">
+    <div class="container footer__in">
+      <div class="footer__desc">
         <a class="footer__logo" href="./index.html" aria-label="3D GROUP — на главную">
 <svg width="273" height="53" aria-hidden="true" viewBox="0 0 273 53" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g>
@@ -276,27 +338,28 @@
 </g>
 </svg>
         </a>
-        <div class="footer__right">
-          <nav class="footer__nav" aria-label="Меню в подвале">
-            <a class="footer__link" href="#">Готовые решения</a>
-            <a class="footer__link" href="#">Индивидуальное внедрение</a>
-            <a class="footer__link" href="./cases.html">Кейсы</a>
-            <a class="footer__link" href="#">О компании</a>
-          </nav>
-          <div class="footer__socials">
-            <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.25 18.48 8 18.92A8 8 0 1 0 5.08 16l.44.75-.66 2.4 2.4-.67ZM2 22l1.35-4.96A10 10 0 1 1 6.96 20.65L2 22Zm6.39-14.69c.13-.01.27-.01.4 0l.17.02c.16.01.33.11.39.24.3.67.59 1.35.86 2.03.06.15.02.34-.1.53-.06.1-.15.22-.27.38l-.38.47c-.12.15-.12.39.02.6a7.8 7.8 0 0 0 4.03 3.36c.21.08.38.06.52-.11.22-.27.45-.55.67-.84.13-.17.31-.2.49-.14.86.4 1.97.92 2.15 1.01.18.09.3.13.35.21.04.33-.01.73-.16 1.15-.33.92-1.8 1.66-2.5 1.7-.47.03-1.06.12-3.31-.83-2.81-1.19-4.58-4.07-4.72-4.25-.13-.18-1.09-1.45-1.09-2.75 0-1.3.68-1.94.95-2.24.26-.29.57-.37.75-.38Z"/></svg></a>
-            <a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.64 6.8-1.64 7.75c-.12.55-.45.68-.9.42l-2.5-1.84-1.2 1.16c-.14.13-.25.24-.5.24l.18-2.53 4.6-4.16c.2-.18-.04-.28-.3-.1l-5.7 3.58-2.45-.76c-.53-.17-.54-.53.11-.79l9.57-3.69c.44-.16.83.11.69.72Z"/></svg></a>
-          </div>
-        </div>
+        <p class="footer__req"><b>Реквизиты компании:</b><br>ИНН: 480206344141<br>ОГРНИП: 321482700013249</p>
       </div>
-      <div class="footer__mid">
-        <p class="footer__req">Реквизиты компании:<br>ИНН: 480206344141<br>ОГРНИП: 321482700013249</p>
+      <div class="footer__nav">
+        <ul class="footer__menu">
+          <li><a href="#">Готовые решения</a></li>
+          <li><a href="#">Индивидуальное внедрение</a></li>
+          <li><a href="./cases.html">Кейсы</a></li>
+          <li><a href="#">О компании</a></li>
+        </ul>
+        <ul class="footer__social">
+          <li><a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.25 18.48 8 18.92A8 8 0 1 0 5.08 16l.44.75-.66 2.4 2.4-.67ZM2 22l1.35-4.96A10 10 0 1 1 6.96 20.65L2 22Zm6.39-14.69c.13-.01.27-.01.4 0l.17.02c.16.01.33.11.39.24.3.67.59 1.35.86 2.03.06.15.02.34-.1.53-.06.1-.15.22-.27.38l-.38.47c-.12.15-.12.39.02.6a7.8 7.8 0 0 0 4.03 3.36c.21.08.38.06.52-.11.22-.27.45-.55.67-.84.13-.17.31-.2.49-.14.86.4 1.97.92 2.15 1.01.18.09.3.13.35.21.04.33-.01.73-.16 1.15-.33.92-1.8 1.66-2.5 1.7-.47.03-1.06.12-3.31-.83-2.81-1.19-4.58-4.07-4.72-4.25-.13-.18-1.09-1.45-1.09-2.75 0-1.3.68-1.94.95-2.24.26-.29.57-.37.75-.38Z"/></svg></a></li>
+          <li><a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.64 6.8-1.64 7.75c-.12.55-.45.68-.9.42l-2.5-1.84-1.2 1.16c-.14.13-.25.24-.5.24l.18-2.53 4.6-4.16c.2-.18-.04-.28-.3-.1l-5.7 3.58-2.45-.76c-.53-.17-.54-.53.11-.79l9.57-3.69c.44-.16.83.11.69.72Z"/></svg></a></li>
+        </ul>
         <div class="footer__contacts">
-          <div class="footer__contact"><a href="tel:+79675553444">+7 (967) 555-34-44</a><b>Номер</b></div>
-          <div class="footer__contact"><a href="mailto:info@3d-group.space">info@3d-group.space</a><b>Почта</b></div>
-          <div class="footer__contact"><span>г. Липецк, просп. Победы, 29, корп. 1</span><b>Адрес офиса</b></div>
+          <table>
+            <tr><th>Номер</th><td><a href="tel:+79675553444">+7 (967) 555-34-44</a></td></tr>
+            <tr><th>Почта</th><td><a href="mailto:info@3d-group.space">info@3d-group.space</a></td></tr>
+            <tr><th>Адрес офиса</th><td>г. Липецк, просп. Победы, 29, корп. 1</td></tr>
+          </table>
         </div>
       </div>
+      <hr class="footer__line">
       <p class="footer__copy">© 3D GROUP | 2010 — 2025 | <a href="#">Пользовательское соглашение</a> | <a href="#">Договор оферты</a></p>
     </div>
   </footer>
@@ -304,13 +367,13 @@
   <div class="modal" id="feedback-modal" style="display:none">
     <h2 class="modal__title">Оставить заявку</h2>
     <form class="form" data-form>
-      <div class="form__fields">
-            <label><span class="visually-hidden">Как к вам обращаться</span><input class="form__input" type="text" name="name" placeholder="Как к вам обращаться *" required></label>
-            <label><span class="visually-hidden">Телефон</span><input class="form__input" type="tel" name="phone" placeholder="Телефон *" required data-mask></label>
+          <div class="form__fields">
+            <label class="ui-field"><input class="ui-field__input" type="text" name="name" placeholder=" " required><span class="ui-field__label">Как к вам обращаться&nbsp;<sup>*</sup></span></label>
+            <label class="ui-field"><input class="ui-field__input" type="tel" name="phone" placeholder=" " required data-mask><span class="ui-field__label">Телефон&nbsp;<sup>*</sup></span></label>
           </div>
           <div class="form__bottom">
-            <label class="form__check"><input type="checkbox" name="agree" required checked> <span>Согласен и ознакомлен c <a href="#">политикой конфиденциальности</a> и обработкой персональных данных</span></label>
-            <button class="form__submit" type="submit">отправить</button>
+            <label class="ui-check"><input class="ui-check__input" type="checkbox" name="agree" required checked><span class="ui-check__box"></span><span class="ui-check__text">Согласен и ознакомлен с <a href="#">политикой конфиденциальности</a> и обработкой персональных данных</span></label>
+            <button class="ui-btn ui-btn--dark" type="submit">Отправить</button>
           </div>
     </form>
   </div>

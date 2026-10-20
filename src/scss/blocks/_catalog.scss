@@ -1,0 +1,108 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Тёмный блок с поиском, фильтрами и карточками — как блок «Кейсы» на главной
+.catalog {
+  position: relative; z-index: 1;
+  padding: 8rem 0 16rem; background: $c-dark; color: $c-white;
+  @include up($bp-lg) { padding: 14.5rem 0 24rem; }
+
+  &__cube {
+    position: absolute; z-index: -1; pointer-events: none;
+    &--1 { display: none; left: -22rem; top: 26rem; width: 52rem; transform: rotate(120deg); @include up($bp-lg) { display: block; } }
+    &--2 { right: -10rem; top: 120rem; width: 20rem; opacity: .6; @include up($bp-lg) { right: -20rem; top: 150rem; width: 40rem; } }
+  }
+
+  &__mark { display: block; margin: 0 0 3.2rem; font: 400 1.4rem/1 $font-secondary; text-transform: uppercase; @include up($bp-lg) { font-size: 2.2rem; margin-bottom: 8rem; } }
+  &__title { @include title; font-size: 3.2rem; text-align: center; @include up($bp-lg) { font-size: 7.7rem; } }
+  &__subtitle { @include title; margin-top: 8rem; font-size: 2.4rem; text-align: center; @include up($bp-lg) { margin-top: 14rem; font-size: 4.8rem; } }
+
+  // Поиск
+  &__search { max-width: 110rem; margin: 3.2rem auto 0; @include up($bp-lg) { margin-top: 6rem; } }
+  &__bar {
+    display: flex; align-items: center; gap: .6rem; padding: .6rem;
+    border: .1rem solid rgba($c-white, .12); border-radius: 2rem;
+    background: rgba($c-white, .06); backdrop-filter: blur(2rem);
+    @include up($bp-lg) { border-radius: 2.6rem; }
+    @include down($bp-md) { flex-direction: column; align-items: stretch; }
+  }
+  &__field {
+    flex: 1; display: flex; align-items: center; gap: 1.2rem; padding: 0 1.6rem;
+    svg { flex: 0 0 auto; width: 2.4rem; height: 2.4rem; opacity: .6; }
+  }
+  &__input {
+    width: 100%; height: 5.6rem; border: 0; background: none; outline: none;
+    font: 400 1.6rem $font-secondary; color: $c-white;
+    &::placeholder { color: rgba($c-white, .45); }
+    &::-webkit-search-cancel-button { filter: invert(1); }
+    @include up($bp-lg) { height: 7.5rem; font-size: 2.2rem; }
+  }
+
+  &__hints {
+    display: grid; gap: .8rem; margin-top: 1.2rem;
+    @include up($bp-md) { grid-template-columns: repeat(3, 1fr); }
+  }
+  &__hint {
+    display: flex; align-items: center; gap: 1.6rem; padding: .8rem; text-align: left;
+    border: .1rem solid rgba($c-white, .08); border-radius: 1.8rem; background: rgba($c-white, .04);
+    font: 500 1.5rem/1.3 $font-primary; color: $c-white;
+    transition: background .2s, border-color .2s;
+    @include up($bp-lg) { font-size: 1.8rem; }
+    &:hover { background: rgba($c-white, .1); }
+    &.is-active { border-color: rgba($c-white, .5); background: rgba($c-white, .12); }
+    svg { flex: 0 0 auto; width: 6.4rem; height: 6.4rem; padding: 1.2rem; border-radius: 1.4rem; background: rgba($c-white, .06); @include up($bp-lg) { width: 7.5rem; height: 7.5rem; } }
+  }
+}
+
+// Фильтры
+.filter {
+  margin-top: 3.2rem;
+  @include up($bp-lg) { margin-top: 6rem; }
+
+  &__row {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 1.2rem;
+    @include down($bp-xl) { flex-direction: column; }
+  }
+  &__group {
+    display: flex; flex-wrap: wrap; padding: .6rem;
+    border: .1rem solid rgba($c-white, .08); border-radius: 2.4rem; background: rgba($c-white, .04);
+    @include down($bp-md) {
+      flex-wrap: nowrap; max-width: 100%; overflow-x: auto; scrollbar-width: none;
+      &::-webkit-scrollbar { display: none; }
+    }
+  }
+  &__btn {
+    position: relative; z-index: 0; overflow: hidden; flex-shrink: 0;
+    padding: 1.4rem 1.8rem; border: 0; border-radius: 1.8rem; background: none;
+    font: 400 1.5rem/1.3 $font-secondary; color: rgba($c-white, .6); white-space: nowrap;
+    transition: color .2s;
+    @include up($bp-lg) { padding: 2rem 2.4rem; font-size: 1.8rem; }
+    &::before { content: ''; position: absolute; inset: 0; z-index: -1; @include brand-gradient; opacity: 0; transition: opacity .3s; }
+    &:hover { color: $c-white; }
+    &.is-active { color: $c-white; &::before { opacity: 1; } }
+    sup { margin-left: .4rem; font-size: .65em; vertical-align: top; opacity: .8; }
+  }
+
+  &__format { align-items: center; flex-wrap: nowrap; flex-shrink: 0; }
+  &__label { padding-left: 1.8rem; font: 400 1.5rem $font-secondary; color: rgba($c-white, .6); @include up($bp-lg) { font-size: 1.8rem; } }
+  &__select {
+    appearance: none; padding: 1.4rem 5rem 1.4rem 1.2rem; border: 0; background: transparent; outline: none; cursor: pointer;
+    font: 400 1.5rem $font-secondary; color: $c-white;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5' fill='none' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 1.6rem center;
+    @include up($bp-lg) { padding: 2rem 6rem 2rem 1.2rem; font-size: 1.8rem; }
+    option { color: $c-black; }
+  }
+
+  &__tags { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.2rem; @include up($bp-lg) { margin-top: 2.4rem; } }
+  &__tag {
+    position: relative; z-index: 0; overflow: hidden;
+    padding: 1.4rem 2rem; border: .1rem solid rgba($c-white, .16); border-radius: 1.8rem; background: none;
+    font: 400 1.5rem/1.3 $font-secondary; color: rgba($c-white, .7);
+    transition: color .2s, border-color .2s;
+    @include up($bp-lg) { padding: 2.2rem 3.2rem; font-size: 1.8rem; }
+    &::before { content: ''; position: absolute; inset: 0; z-index: -1; @include brand-gradient; opacity: 0; transition: opacity .3s; }
+    &:hover { color: $c-white; border-color: rgba($c-white, .4); }
+    &.is-active { color: $c-white; border-color: transparent; &::before { opacity: 1; } }
+  }
+}

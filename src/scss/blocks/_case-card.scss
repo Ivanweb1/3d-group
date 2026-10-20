@@ -2,21 +2,19 @@
 @use '../mixins' as *;
 
 .cases-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 12px;
-  margin-top: 60px; padding-bottom: 80px;
-  @include down($bp-lg) { grid-template-columns: 1fr; gap: 24px; }
+  display: grid; grid-template-columns: 1fr; gap: 1.2rem;
+  margin-top: 4rem;
+  @include up($bp-lg) { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin-top: 6rem; }
 
   &__empty {
-    grid-column: 1 / -1; padding: 60px 0; text-align: center;
-    font-family: $font-head; font-size: 20px; text-transform: uppercase; color: $c-muted;
+    grid-column: 1 / -1; margin: 0; padding: 6rem 0; text-align: center;
+    font: 400 2rem/1.3 $font-secondary; text-transform: uppercase; color: rgba($c-white, .5);
   }
 }
 
-// Карточка кейса. Устроена так, чтобы её можно было заполнять из админки:
-// - фото любого размера обрезается под одну пропорцию;
-// - высота подстраивается под текст, длинный текст обрезается до 2 строк;
-// - пустую строку таблицы можно просто не выводить;
-// - точки-разделители в списках рисует CSS, в данных — обычный список.
+// Карточка кейса. Заполняется из инфоблока:
+// иконка любого размера вписывается по центру, высота подстраивается под текст,
+// длинный текст обрезается, пустые строки таблицы просто не выводятся.
 $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12h15m-6-6 6 6-6 6' fill='none' stroke='%23101010' stroke-opacity='.64' stroke-width='1.5'/%3E%3C/svg%3E");
 
 .case-card {
@@ -24,60 +22,73 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBo
 
   &__link {
     display: flex; flex-direction: column; height: 100%;
-    overflow: hidden;
-    border: 1px solid $c-line-light; border-radius: 30px;
-    background: $c-white;
-    transition: box-shadow .3s;
-    &:hover { box-shadow: 0 20px 50px rgba(0, 0, 0, .08); }
+    overflow: hidden; border-radius: 2rem; background: $c-white; color: $c-black;
+    @include up($bp-lg) { border-radius: 3rem; }
   }
 
   &__media {
-    position: relative; flex-shrink: 0;
-    aspect-ratio: 884 / 351;
-    overflow: hidden; border-radius: 30px;
-    background: $c-gray-bg;
-    img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
-    &::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(#000, .45), rgba(#000, .1) 50%);
+    position: relative; flex-shrink: 0; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    aspect-ratio: 16 / 10; border-radius: 2rem 2rem 0 0; background: $c-card;
+    @include up($bp-lg) { aspect-ratio: 884 / 400; border-radius: 3rem 3rem 0 0; }
+
+    // мягкое свечение в цветах бренда за иконкой
+    &::before {
+      content: ''; position: absolute; width: 40%; aspect-ratio: 1; border-radius: 50%;
+      @include brand-gradient; filter: blur(6rem); opacity: .25; transition: opacity .4s, transform .6s;
     }
-    @include down($bp-md) { aspect-ratio: 4 / 3; }
+    img { position: relative; width: 34%; max-width: 16rem; height: auto; object-fit: contain; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
   }
-  &__link:hover &__media img { transform: scale(1.05); }
 
-  &__badges { position: absolute; top: 12px; left: 12px; right: 12px; z-index: 2; display: flex; flex-wrap: wrap; gap: 8px; }
+  // При наведении — затемнение с пунктирным кругом «Читать кейс», как на главной
+  &__overlap {
+    position: absolute; inset: 0; z-index: 3;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0, 0, 0, .7); color: $c-white;
+    font: 600 1.5rem/1.2 $font-primary; text-transform: uppercase;
+    opacity: 0; transition: opacity .25s;
+    &::before {
+      content: ''; position: absolute; width: 21.6rem; aspect-ratio: 1;
+      background: url("data:image/svg+xml,%3Csvg width='216' height='216' viewBox='0 0 216 216' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='108' cy='108' r='77.5' stroke='white' stroke-dasharray='11.32 11.32'/%3E%3Ccircle cx='108' cy='108' r='107.5' stroke='white' stroke-opacity='0.8'/%3E%3C/svg%3E") center / contain no-repeat;
+      animation: spin 24s linear infinite;
+    }
+  }
+  @media (hover: hover) {
+    &__link:hover &__overlap { opacity: 1; }
+    &__link:hover &__media img { transform: scale(1.08); }
+    &__link:hover &__media::before { opacity: .45; transform: scale(1.2); }
+  }
+
+  &__badges { position: absolute; top: 1.2rem; left: 1.2rem; right: 1.2rem; z-index: 2; display: flex; flex-wrap: wrap; gap: .8rem; }
   &__badge {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 9px 16px; border-radius: 100px; background: $c-white;
-    font-family: $font-head; font-weight: 500; font-size: 15px; line-height: 21px; color: $c-black;
-    svg { width: 24px; height: 24px; margin-block: -2px; }
-    &--blue { background: $c-blue-bg; border: 1px solid rgba($c-blue, .2); color: $c-blue; }
+    display: inline-flex; align-items: center; gap: .8rem;
+    padding: .8rem 1.6rem; border-radius: 10rem; background: $c-white;
+    font: 500 1.3rem/1.3 $font-secondary; color: $c-black;
+    @include up($bp-lg) { font-size: 1.5rem; }
+    svg { width: 2rem; height: 2rem; }
+    &--accent { position: relative; z-index: 0; overflow: hidden; color: $c-white; &::before { content: ''; position: absolute; inset: 0; z-index: -1; @include brand-gradient; } }
   }
 
-  &__more {
-    position: absolute; left: 24px; right: 24px; bottom: 24px; z-index: 2;
-    display: flex; justify-content: space-between; align-items: center;
-    font-family: $font-head; font-size: clamp(18px, 1.3vw, 24px); line-height: 32px; text-transform: uppercase; color: $c-white;
-    svg { width: 32px; height: 32px; transition: transform .3s; }
+  &__head { padding: 2.4rem 2.4rem 1.6rem; @include up($bp-lg) { padding: 3.2rem 3.2rem 2.4rem; } }
+  &__title {
+    @include title; font-size: 2.2rem; line-height: 1.2;
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+    @include up($bp-lg) { font-size: 3.2rem; }
   }
-  &__link:hover &__more svg { transform: translateX(6px); }
 
   &__info { flex: 1; margin: 0; }
   &__row {
-    display: grid; grid-template-columns: 142px 48px 1fr;
-    border-top: 1px solid $c-line-light;
-    font-family: $font-head; font-size: 15px; line-height: 21px; text-transform: uppercase; color: rgba($c-black, .64);
-
-    // Колонка со стрелкой — без лишней разметки
+    display: grid; grid-template-columns: 14.2rem 4.8rem 1fr;
+    border-top: .1rem solid $c-line-light;
+    font: 400 1.5rem/1.4 $font-secondary; text-transform: uppercase; color: rgba($c-black, .64);
     &::before {
       content: ''; grid-column: 2; grid-row: 1;
-      border-inline: 1px solid $c-line-light;
-      background: $arrow center / 24px no-repeat;
+      border-inline: .1rem solid $c-line-light;
+      background: $arrow center / 2.4rem no-repeat;
     }
-    dt { grid-column: 1; grid-row: 1; padding: 32px 24px; }
-    // Отступы через margin, чтобы обрезка до 2 строк не показывала кусок третьей
+    dt { grid-column: 1; grid-row: 1; padding: 2.6rem 2.4rem; @include up($bp-lg) { padding-left: 3.2rem; } }
     dd {
-      grid-column: 3; grid-row: 1; margin: 32px 24px; padding: 0;
+      grid-column: 3; grid-row: 1; margin: 2.6rem 2.4rem; padding: 0;
       display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
     }
   }
@@ -86,8 +97,8 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBo
     li { display: inline; }
     li + li::before {
       content: ''; display: inline-block; vertical-align: middle;
-      width: 8px; height: 8px; margin: -2px 12px 0;
-      border: 1px solid #989898; border-radius: 50%;
+      width: .8rem; height: .8rem; margin: -.2rem 1.2rem 0;
+      border: .1rem solid #989898; border-radius: 50%;
     }
   }
 
@@ -95,8 +106,33 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBo
     &__row {
       grid-template-columns: 1fr;
       &::before { display: none; }
-      dt { padding: 16px 20px 4px; color: $c-muted; }
-      dd { grid-column: 1; grid-row: 2; margin: 0 20px 16px; color: $c-black; -webkit-line-clamp: 4; }
+      dt { padding: 1.6rem 2.4rem .4rem; color: $c-gray; }
+      dd { grid-column: 1; grid-row: 2; margin: 0 2.4rem 1.6rem; color: $c-black; -webkit-line-clamp: 4; }
     }
   }
 }
+
+// Последняя карточка — «Место для вашей компании», как на главной
+.place-card {
+  grid-column: 1 / -1;
+  position: relative; z-index: 0; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.4rem;
+  min-height: 24rem; padding: 4rem 2.4rem; border-radius: 2rem; text-align: center; color: $c-white;
+  @include brand-gradient;
+  @include up($bp-lg) { min-height: 36rem; border-radius: 3rem; }
+
+  &__title { @include title; font-size: 2.8rem; line-height: 1.4; @include up($bp-lg) { font-size: 5.6rem; } }
+  &__btn {
+    display: inline-flex; align-items: center; gap: 1.2rem;
+    padding: 1.6rem 3.2rem; border: .1rem solid rgba($c-white, .6); border-radius: 10rem; background: none;
+    font: 400 1.6rem/1 $font-secondary; text-transform: uppercase; color: $c-white;
+    transition: background .2s, color .2s;
+    @include up($bp-lg) { font-size: 2rem; padding: 2rem 4rem; }
+    svg { width: 2.4rem; height: 2.4rem; }
+    &:hover { background: $c-white; color: $c-black; }
+  }
+  &__cube { position: absolute; z-index: -1; right: -6rem; bottom: -8rem; width: 16rem; opacity: .5; @include up($bp-lg) { right: 4rem; bottom: -10rem; width: 36rem; opacity: .9; } }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .case-card__overlap::before { animation: none; } }

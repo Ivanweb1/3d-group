@@ -3,23 +3,21 @@
 @mixin up($bp) { @media (min-width: $bp) { @content; } }
 @mixin down($bp) { @media (max-width: $bp - 0.02px) { @content; } }
 
-// Маленькие серые квадраты 3×3 по углам блока — декор из макета
-@mixin corner-dots($color: $c-dot) {
+// Фирменный градиент сайта (кнопки, «Место для вашей компании»)
+@mixin brand-gradient {
   background-image:
-    linear-gradient($color, $color), linear-gradient($color, $color),
-    linear-gradient($color, $color), linear-gradient($color, $color);
-  background-size: 3px 3px;
-  background-repeat: no-repeat;
-  background-position: top left, top right, bottom left, bottom right;
+    linear-gradient(90deg, rgba(130, 71, 237, .7) 0%, #eb8f73 100%),
+    conic-gradient(from 90deg, rgba(255, 255, 255, 0) 0deg, rgba(0, 0, 0, .2) 72deg, rgba(255, 255, 255, .2) 144deg,
+      rgba(0, 0, 0, .2) 216deg, rgba(255, 255, 255, .2) 288deg, rgba(0, 0, 0, .2) 360deg);
+  background-blend-mode: difference;
 }
 
-// Заголовок в стиле сайта: Suisse, капс
-@mixin title($size-max: 77px, $size-min: 32px) {
+// Заголовок сайта: SuisseIntl, капс, плотный трекинг
+@mixin title {
   margin: 0;
-  font-family: $font-head;
+  font-family: $font-secondary;
   font-weight: 400;
-  font-size: clamp($size-min, 4vw, $size-max);
-  line-height: 1;
+  line-height: 1.2;
   text-transform: uppercase;
-  color: $c-black;
+  letter-spacing: -0.0275em;
 }

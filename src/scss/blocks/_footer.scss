@@ -2,32 +2,43 @@
 @use '../mixins' as *;
 
 .footer {
-  padding: 40px 0 32px; background: $c-white;
+  position: relative; z-index: 2;
+  padding: 4rem 0 3.2rem; background: linear-gradient(rgba(255, 255, 255, .55), rgba(255, 255, 255, .55)), $c-white url('../../assets/images/bg.jpg') 50% 0 / 100% auto repeat-y;
+  @include up($bp-lg) { padding: 7rem 0 3.5rem; }
 
-  &__top {
-    display: flex; justify-content: space-between; align-items: center; gap: 32px;
-    @include down($bp-xl) { flex-direction: column; align-items: flex-start; }
+  &__in {
+    display: grid; gap: 3.2rem;
+    grid-template-areas: 'desc' 'nav' 'line' 'copy';
+    @include up($bp-lg) { grid-template-columns: auto 1fr; grid-template-areas: 'desc nav' 'line line' 'copy copy'; gap: 0 4rem; align-items: start; }
   }
-  &__logo { color: $c-black; svg { width: 272px; height: auto; } }
-  &__right { display: flex; align-items: center; gap: clamp(24px, 4vw, 80px); flex-wrap: wrap; }
-  &__nav { display: flex; flex-wrap: wrap; gap: 16px clamp(24px, 4vw, 80px); }
-  &__link { font-family: $font-head; font-size: 20px; &:hover { opacity: .6; } }
-  &__socials { display: flex; gap: 12px; a { display: block; &:hover { opacity: .6; } } svg { width: 25px; height: 25px; } }
+  &__desc { grid-area: desc; display: grid; gap: 3rem; @include up($bp-lg) { margin-bottom: 3rem; } }
+  &__logo { width: 20rem; color: $c-black; @include up($bp-lg) { width: 27.7rem; } svg { width: 100%; height: auto; } }
+  &__req { margin: 0; font-size: 1.4rem; line-height: 1.5; @include up($bp-lg) { font-size: 1.6rem; } }
 
-  &__mid {
-    display: flex; justify-content: space-between; gap: 24px; margin-top: 22px; padding-bottom: 30px;
-    border-bottom: 1px solid $c-line;
-    font-size: 16px; line-height: 1.25;
-    @include down($bp-md) { flex-direction: column; }
+  &__nav {
+    grid-area: nav; display: flex; flex-direction: column; gap: 2.4rem;
+    @include up($bp-lg) { flex-direction: row; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 3rem 4rem; padding-top: 4rem; }
   }
-  &__req { max-width: 220px; margin: 0; }
-  &__contacts { display: flex; flex-direction: column; gap: 4px; }
-  &__contact {
-    display: flex; justify-content: flex-end; gap: 20px;
-    b { min-width: 111px; font-weight: 500; text-align: right; }
+  &__menu {
+    display: flex; flex-direction: column; gap: 1.6rem; margin: 0; padding: 0; list-style: none;
+    font: 400 1.8rem/1.3 $font-secondary; letter-spacing: .03em;
+    @include up($bp-lg) { flex-direction: row; gap: 8rem; font-size: 2rem; }
     a:hover { opacity: .6; }
-    @include down($bp-md) { justify-content: space-between; }
   }
-  &__copy { margin: 32px 0 0; text-align: center; font-family: $font-head; font-size: 18px; color: $c-muted;
-    a:hover { color: $c-black; } }
+  &__social { display: flex; gap: 1.2rem; margin: 0; padding: 0; list-style: none; a { display: block; &:hover { opacity: .6; } } svg { width: 3.2rem; height: 3.2rem; } }
+  &__contacts {
+    border-collapse: collapse; font-size: 1.4rem; line-height: 1.3;
+    @include up($bp-lg) { flex: 0 0 100%; display: flex; justify-content: flex-end; }
+    table { border-collapse: collapse; }
+    th, td { padding: .4rem 0; vertical-align: middle; }
+    th { padding-right: 2.4rem; font-weight: 500; text-align: left; white-space: nowrap; }
+    a:hover { opacity: .6; }
+  }
+  &__line { grid-area: line; width: 100%; margin: 0; border: 0; border-top: .1rem solid $c-line; }
+  &__copy {
+    grid-area: copy; margin: 0; padding-top: 2.4rem; text-align: center;
+    font: 400 1.4rem/1.4 $font-secondary; color: #868686;
+    @include up($bp-lg) { padding-top: 3.5rem; font-size: 1.8rem; }
+    a:hover { color: $c-black; }
+  }
 }

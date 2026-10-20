@@ -1,9 +1,8 @@
 @use 'base';
 @use 'blocks/header';
-@use 'blocks/page-head';
+@use 'blocks/hero';
 @use 'blocks/tasks';
-@use 'blocks/case-search';
-@use 'blocks/case-filter';
+@use 'blocks/catalog';
 @use 'blocks/case-card';
-@use 'blocks/cta';
+@use 'blocks/feedback';
 @use 'blocks/footer';

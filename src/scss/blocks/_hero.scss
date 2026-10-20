@@ -1,0 +1,63 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.hero {
+  position: relative; padding: 12rem 0 6rem;
+  @include up($bp-lg) { padding: 25rem 0 12rem; }
+
+  &__in {
+    display: grid; gap: 2.4rem;
+    grid-template-areas: 'copy' 'title' 'quote' 'desc' 'counter';
+    @include up($bp-lg) {
+      grid-template-columns: 1fr 1fr 2fr;
+      grid-template-areas: 'copy year quote' 'title title title' 'desc desc counter';
+      align-items: end; gap: 5.5rem 0;
+    }
+  }
+  &__copy { grid-area: copy; font-size: 1.4rem; @include up($bp-lg) { font-size: 2.2rem; } }
+  &__year { grid-area: year; font-size: 1.4rem; @include up($bp-lg) { font-size: 2.2rem; } @include down($bp-lg) { display: none; } }
+  &__quote {
+    grid-area: quote; position: relative; z-index: 1; margin: 0; font-size: 1.6rem; line-height: 1.4;
+    @include up($bp-lg) { font-size: 2.2rem; text-align: right; max-width: 68rem; justify-self: end; }
+  }
+
+  &__title {
+    @include title; grid-area: title; position: relative; z-index: 1;
+    font-size: 8rem; line-height: 1; letter-spacing: -0.04em;
+    @include up($bp-lg) { font-size: 21.5rem; margin: 2rem 0; }
+    small {
+      display: block; margin-top: 1.6rem;
+      font: 600 1.4rem/1.2 $font-primary; text-transform: none; letter-spacing: 0;
+      @include up($bp-lg) { display: inline-block; vertical-align: top; margin: 3rem 0 0 3rem; font-size: 2.4rem; }
+    }
+  }
+
+  &__desc {
+    grid-area: desc; margin: 0; max-width: 86rem;
+    font-size: 2rem; line-height: 1.3; font-weight: 300;
+    @include up($bp-lg) { font-size: 3.2rem; }
+  }
+
+  &__counter {
+    grid-area: counter; justify-self: end;
+    display: flex; align-items: center; gap: 2.4rem; margin: 0;
+    @include up($bp-lg) { gap: 3.2rem; }
+    b { font: 400 6.4rem/1 $font-secondary; letter-spacing: -0.04em; @include up($bp-lg) { font-size: 11rem; } }
+    span { max-width: 28rem; font-size: 1.6rem; line-height: 1.3; @include up($bp-lg) { font-size: 2.4rem; max-width: 36rem; } }
+    @include down($bp-lg) { justify-self: start; }
+  }
+
+  // Стеклянный куб сайта
+  &__cube {
+    position: absolute; z-index: 0; pointer-events: none;
+    right: -5rem; top: 16rem; width: 15rem; opacity: .85;
+    @include up($bp-lg) { right: 12rem; top: 34rem; width: 44rem; }
+  }
+  &__cube-small {
+    position: absolute; z-index: 0; pointer-events: none;
+    display: none;
+    @include up($bp-lg) { display: block; left: 48%; top: 14rem; width: 14rem; transform: rotate(-20deg); filter: blur(.3rem); opacity: .9; }
+  }
+
+  &__line { margin-top: 6rem; border: 0; border-top: .1rem solid $c-line; @include up($bp-lg) { margin-top: 12rem; } }
+}
