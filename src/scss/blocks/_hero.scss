@@ -7,15 +7,16 @@
 
   &__in {
     display: grid; gap: 2.4rem;
-    grid-template-areas: 'title' 'quote' 'desc' 'counter';
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 'copy year' 'title title' 'quote quote' 'desc desc' 'counter counter';
     @include up($bp-lg) {
       grid-template-columns: 1fr 1fr 2fr;
       grid-template-areas: 'copy year quote' 'title title title' 'desc desc counter';
       align-items: end; gap: 5.5rem 0;
     }
   }
-  &__copy { grid-area: copy; font-size: 1.4rem; @include up($bp-lg) { font-size: 2rem; } @include down($bp-lg) { display: none; } }
-  &__year { grid-area: year; font-size: 1.4rem; @include up($bp-lg) { font-size: 2rem; text-align: center; } @include down($bp-lg) { display: none; } }
+  &__copy { grid-area: copy; font-size: 1.4rem; @include up($bp-lg) { font-size: 2rem; } }
+  &__year { grid-area: year; font-size: 1.4rem; justify-self: end; @include up($bp-lg) { font-size: 2rem; justify-self: auto; text-align: center; } }
   &__quote {
     grid-area: quote; position: relative; z-index: 1; margin: 0; font-size: 1.6rem; line-height: 1.4;
     @include up($bp-lg) { font-size: 2.2rem; text-align: right; max-width: 68rem; justify-self: end; }

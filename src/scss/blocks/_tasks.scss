@@ -49,13 +49,16 @@
     &:disabled { cursor: default; opacity: .5; &::before { display: none; } }
   }
   &__num { font: 400 1.4rem/1 $font-secondary; opacity: .5; @include up($bp-lg) { font-size: 2rem; } }
-  // Справа место под иконку, чтобы длинное название не налезало на неё
-  &__name { font: 400 2.2rem/1.2 $font-secondary; padding-right: 7.2rem; @include up($bp-lg) { font-size: 3.2rem; padding-right: 11.2rem; } }
+  // На мобильном название на всю ширину, поэтому опускаем его ниже иконки
+  &__name {
+    font: 400 2.2rem/1.2 $font-secondary; margin-top: 1rem;
+    @include up($bp-lg) { margin-top: 0; font-size: 3.2rem; padding-right: 6rem; }
+  }
 
   // Иконка в фирменном градиенте; при наведении плитка заливается градиентом, иконка белеет
   &__icon {
     position: absolute; top: 2.4rem; right: 2.4rem;
-    width: 5.6rem; height: 5.6rem;
+    width: 4.4rem; height: 4.4rem;
     fill: none; stroke: url(#brand-g); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round;
     transition: stroke .3s, transform .4s cubic-bezier(.2, .7, .2, 1);
     @include up($bp-lg) { top: 3.2rem; right: 3.2rem; width: 9.6rem; height: 9.6rem; }

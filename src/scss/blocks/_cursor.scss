@@ -1,0 +1,13 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Точка за курсором (как на 3d-group.space): белая + difference — чёрная на светлом, белая на тёмном
+.cursor {
+  display: none;
+  @include up($bp-lg) {
+    display: block; position: fixed; top: 0; left: 0; z-index: 2000;
+    width: 2rem; height: 2rem; margin: -1rem 0 0 -1rem; border-radius: 50%;
+    background: $c-white; mix-blend-mode: difference; pointer-events: none;
+    opacity: 0; transition: opacity .25s;
+  }
+}
