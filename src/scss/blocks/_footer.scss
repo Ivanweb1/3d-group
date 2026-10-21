@@ -3,7 +3,7 @@
 
 .footer {
   position: relative; z-index: 2;
-  padding: 4rem 0 3.2rem; background: linear-gradient(rgba(255, 255, 255, .55), rgba(255, 255, 255, .55)), $c-white url('../../assets/images/bg.jpg') 50% 0 / 100% auto repeat-y;
+  padding: 4rem 0 3.2rem; background: $c-white url('../../assets/images/bg.webp') 50% 0 repeat;
   @include up($bp-lg) { padding: 7rem 0 3.5rem; }
 
   &__in {

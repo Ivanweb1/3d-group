@@ -1,9 +1,9 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-// Как на сайте: на десктопе 1rem = 10px при ширине 1920 и масштабируется вместе с экраном
+// Как на сайте 3d-group.space: 1rem = 10px, на ноутбуках (992–1919px) масштабируется от ширины экрана
 html { font-size: 10px; -webkit-tap-highlight-color: transparent; }
-@include up($bp-lg) { html { font-size: .5208333vw; } }
+@media (min-width: $bp-lg) and (max-width: 1919px) { html { font-size: .46875vw; } }
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -15,7 +15,8 @@ body {
   min-width: 320px;
   font: 400 1.6rem/1.5 $font-primary;
   color: $c-black;
-  background: linear-gradient(rgba(255, 255, 255, .55), rgba(255, 255, 255, .55)), $c-white url('../assets/images/bg.jpg') 50% 0 / 100% auto repeat-y;
+  // Фон как на сайте: текстура в натуральном размере, без растяжения
+  background: $c-white url('../assets/images/bg.webp') 50% 0 repeat;
   -webkit-font-smoothing: antialiased;
   @include up($bp-lg) { font-size: 1.8rem; }
 }

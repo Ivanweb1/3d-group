@@ -49,7 +49,8 @@
     &:disabled { cursor: default; opacity: .5; &::before { display: none; } }
   }
   &__num { font: 400 1.4rem/1 $font-secondary; opacity: .5; @include up($bp-lg) { font-size: 2rem; } }
-  &__name { font: 400 2.2rem/1.2 $font-secondary; padding-right: 4rem; @include up($bp-lg) { font-size: 3.2rem; padding-right: 6rem; } }
+  // Справа место под иконку, чтобы длинное название не налезало на неё
+  &__name { font: 400 2.2rem/1.2 $font-secondary; padding-right: 7.2rem; @include up($bp-lg) { font-size: 3.2rem; padding-right: 11.2rem; } }
 
   // Иконка в фирменном градиенте; при наведении плитка заливается градиентом, иконка белеет
   &__icon {

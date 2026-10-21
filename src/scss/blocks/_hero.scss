@@ -14,8 +14,8 @@
       align-items: end; gap: 5.5rem 0;
     }
   }
-  &__copy { grid-area: copy; font-size: 1.4rem; @include up($bp-lg) { font-size: 2.2rem; } @include down($bp-lg) { display: none; } }
-  &__year { grid-area: year; font-size: 1.4rem; @include up($bp-lg) { font-size: 2.2rem; } @include down($bp-lg) { display: none; } }
+  &__copy { grid-area: copy; font-size: 1.4rem; @include up($bp-lg) { font-size: 2rem; } @include down($bp-lg) { display: none; } }
+  &__year { grid-area: year; font-size: 1.4rem; @include up($bp-lg) { font-size: 2rem; text-align: center; } @include down($bp-lg) { display: none; } }
   &__quote {
     grid-area: quote; position: relative; z-index: 1; margin: 0; font-size: 1.6rem; line-height: 1.4;
     @include up($bp-lg) { font-size: 2.2rem; text-align: right; max-width: 68rem; justify-self: end; }
@@ -33,11 +33,6 @@
   &__title-slide {
     grid-area: 1 / 1; display: flex; flex-direction: column; align-items: flex-start;
     padding: 1rem 0; white-space: nowrap;
-    small {
-      display: block; margin-top: 1.2rem;
-      font: 600 1.4rem/1.2 $font-primary; text-transform: none; letter-spacing: 0;
-      @include up($bp-lg) { margin-top: 1.6rem; padding-left: .8rem; font-size: 2.4rem; }
-    }
   }
 
   &__desc {
