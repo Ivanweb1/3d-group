@@ -43,6 +43,19 @@
 
 }
 
+// Размытая подложка шапки. Отдельный слой под шапкой: blend-mode шапки смешивает текст
+// уже с размытым фоном, поэтому текст по-прежнему чёрный на светлом и белый на тёмном
+.header-blur {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 899; pointer-events: none;
+  height: 6rem; @include up($bp-lg) { height: 10rem; }
+  backdrop-filter: blur(1.2rem); -webkit-backdrop-filter: blur(1.2rem);
+  -webkit-mask-image: linear-gradient(#000 70%, transparent);
+  mask-image: linear-gradient(#000 70%, transparent);
+  opacity: 0; transition: opacity .3s;
+  .is-scrolled & { opacity: 1; }
+  .is-nav-open & { opacity: 0; }
+}
+
 // Мобильное меню — как на сайте: белый экран, пункты по центру, внизу контакты.
 // Лежит отдельно от шапки, чтобы на него не действовал blend-mode
 .mobile-nav {

@@ -14,6 +14,7 @@
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="brand-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8247ed"/><stop offset="1" stop-color="#eb8f73"/></linearGradient></defs></svg>
+  <div class="header-blur" aria-hidden="true"></div>
   <header class="header">
     <div class="container header__in">
       <a class="header__logo" href="./index.html" aria-label="3D GROUP — на главную">
@@ -68,7 +69,7 @@
       <img class="hero__cube-small" src="./src/assets/images/cube-small.webp" alt="" width="334" height="323" data-parallax="0.35">
       <div class="container hero__in">
         <span class="hero__copy">© 3D GROUP</span>
-        <span class="hero__year">2019 — 2025</span>
+        <span class="hero__year">2019 — <span data-year-now>2026</span></span>
         <p class="hero__quote" data-reveal>В кейсах — задачи клиентов, реализованные решения и результат: от внедрения Битрикс24 и amoCRM до интеграций с 1С, разработки и технической поддержки.</p>
         <h1 class="hero__title" aria-label="Кейсы 3D GROUP" data-hero-title>
           <span class="hero__title-clip" aria-hidden="true">
@@ -95,9 +96,6 @@
           <li data-reveal><button class="tasks__item" type="button" data-task="sales" aria-pressed="false"><span class="tasks__num">04</span><svg class="tasks__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18 9.5 12l4 3.5L20 8"/><path d="M15 8h5v5"/></svg><span class="tasks__name">Автоматизация продаж</span><span class="tasks__count" data-task-count></span><svg class="tasks__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></button></li>
           <li data-reveal><button class="tasks__item" type="button" data-task="processes" aria-pressed="false"><span class="tasks__num">05</span><svg class="tasks__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 0 1-14.3 4.9M4 12a8 8 0 0 1 14.3-4.9"/><path d="M18.5 3v4.2h-4.2M5.5 21v-4.2h4.2"/></svg><span class="tasks__name">Автоматизация<br> внутренних процессов</span><span class="tasks__count" data-task-count></span><svg class="tasks__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></button></li>
           <li data-reveal><button class="tasks__item" type="button" data-task="telephony" aria-pressed="false"><span class="tasks__num">06</span><svg class="tasks__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5 9 4.3l1 4-2 1.3a11 11 0 0 0 6.4 6.4l1.3-2 4 1 .8 2.4a2 2 0 0 1-2 2.6A16 16 0 0 1 4 6.4a2 2 0 0 1 2.6-2.9Z"/></svg><span class="tasks__name">Подключение телефонии<br> и мессенджеров</span><span class="tasks__count" data-task-count></span><svg class="tasks__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></button></li>
-          <li data-reveal><button class="tasks__item" type="button" data-task="site-crm" aria-pressed="false"><span class="tasks__num">07</span><svg class="tasks__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="3"/><path d="M3 9h18M6.5 6.8h.01M9 6.8h.01"/><path d="M8 14h4M8 16.5h7"/></svg><span class="tasks__name">Интеграция сайта и CRM</span><span class="tasks__count" data-task-count></span><svg class="tasks__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></button></li>
-          <li data-reveal><button class="tasks__item" type="button" data-task="analytics" aria-pressed="false"><span class="tasks__num">08</span><svg class="tasks__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V12M10 20V6M15 20v-9M20 20V4"/></svg><span class="tasks__name">Настройка аналитики</span><span class="tasks__count" data-task-count></span><svg class="tasks__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></button></li>
-          <li data-reveal><button class="tasks__item" type="button" data-task="growth" aria-pressed="false"><span class="tasks__num">09</span><svg class="tasks__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 4.5-9 4.5-9-4.5L12 3Z"/><path d="m3 12 9 4.5 9-4.5M3 16.5 12 21l9-4.5"/></svg><span class="tasks__name">Развитие существующей<br> системы</span><span class="tasks__count" data-task-count></span><svg class="tasks__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></button></li>
         </ul>
       </div>
     </section>
@@ -107,9 +105,10 @@
       <img class="catalog__cube catalog__cube--2" src="./src/assets/images/cube.webp" alt="" width="800" height="678" loading="lazy" data-parallax="0.2">
       <div class="container">
         <span class="catalog__mark" data-split>Кейсы</span>
-        <h2 class="catalog__title" data-split>Найдите кейс по вашей задаче</h2>
+        <h2 class="catalog__title" data-split>Как бизнес растет после внедрения</h2>
+        <p class="catalog__lead" data-reveal>Собрали для вас истории роста наших клиентов, чтобы вы могли найти сценарий развития, который подойдет вашему бизнесу</p>
 
-        <div class="catalog__search">
+        <div class="filter">
           <form class="catalog__bar" role="search" data-search>
             <label class="catalog__field">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m21 21-4.35-4.35M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -118,38 +117,13 @@
             </label>
             <button class="ui-btn ui-btn--gradient" type="submit">Показать похожие кейсы</button>
           </form>
-          <div class="catalog__hints">
-          <button class="catalog__hint" type="button" data-hint="продаж"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8247ed"/><stop offset="1" stop-color="#eb8f73"/></linearGradient></defs><path fill="url(#gf)" d="M4 8h40l-14 16v14l-12 6V24L4 8Z"/></svg>Воронка продаж и закупок</button>
-          <button class="catalog__hint" type="button" data-hint="телефония"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="gc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8247ed"/><stop offset="1" stop-color="#eb8f73"/></linearGradient></defs><path fill="url(#gc)" d="M8 6h32a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H20l-10 8v-8H8a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4Zm6 10v4h20v-4H14Zm0 8v3h12v-3H14Z"/></svg>Телефония и мессенджеры</button>
-          <button class="catalog__hint" type="button" data-hint="СБИС"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8247ed"/><stop offset="1" stop-color="#eb8f73"/></linearGradient></defs><path fill="url(#gd)" d="M10 4h20l10 10v30H10V4Zm19 2v9h9L29 6ZM16 30.5l2.8-2.8 4.2 4.2 8.2-8.2 2.8 2.8L23 37.5l-7-7Z"/></svg>Интеграция СБИС</button>
-          </div>
-        </div>
-
-        <h2 class="catalog__subtitle" data-split>Или подберите по фильтрам</h2>
-        <div class="filter">
-          <div class="filter__row">
-            <div class="filter__block">
-              <span class="filter__caption" id="dir-caption">Направление</span>
-              <div class="filter__tags" role="group" aria-labelledby="dir-caption">
-  <button class="filter__tag" type="button" data-tag="bitrix24" aria-pressed="false">Битрикс24</button>
-            <button class="filter__tag" type="button" data-tag="amocrm" aria-pressed="false">amoCRM</button>
-            <button class="filter__tag" type="button" data-tag="sites" aria-pressed="false">Разработка сайтов</button>
-            <button class="filter__tag" type="button" data-tag="ai-bots" aria-pressed="false">Внедрение ИИ-ботов</button>
-              </div>
-            </div>
-            <div class="filter__block filter__block--format">
-              <span class="filter__caption" id="format-caption">Формат</span>
-              <div class="filter__group filter__format dropdown" data-dropdown>
-                <button class="dropdown__toggle" type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="format-caption format-value" data-dropdown-toggle>
-                  <span id="format-value" data-dropdown-value>Все</span>
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.5"/></svg>
-                </button>
-  <ul class="dropdown__menu" role="listbox" aria-labelledby="format-caption" tabindex="-1" data-dropdown-menu data-format-select>
-                <li class="dropdown__option" role="option" data-value="all" aria-selected="true">Все</li>
-                <li class="dropdown__option" role="option" data-value="individual" aria-selected="false">Индивидуальное внедрение</li>
-                <li class="dropdown__option" role="option" data-value="ready" aria-selected="false">Готовое решение</li>
-              </ul>
-              </div>
+          <div class="filter__block">
+            <span class="filter__caption" id="dir-caption">Направление</span>
+            <div class="filter__tags" role="group" aria-labelledby="dir-caption">
+              <button class="filter__tag" type="button" data-tag="bitrix24" aria-pressed="false">Битрикс24</button>
+              <button class="filter__tag" type="button" data-tag="amocrm" aria-pressed="false">amoCRM</button>
+              <button class="filter__tag" type="button" data-tag="sites" aria-pressed="false">Разработка сайтов</button>
+              <button class="filter__tag" type="button" data-tag="ai-bots" aria-pressed="false">Внедрение ИИ-ботов</button>
             </div>
           </div>
           <div class="filter__block">
@@ -172,7 +146,7 @@
         </div>
 
         <div class="cases-grid" data-cases>
-        <article class="case-card" data-case data-sphere="logistics" data-format="individual" data-tasks="crm-new processes telephony" data-tags="bitrix24">
+        <article class="case-card" data-case data-sphere="logistics" data-tasks="crm-new processes telephony" data-tags="bitrix24">
           <a class="case-card__link" href="https://3d-group.space/cases/stratum-oak/">
             <div class="case-card__media case-card__media--cover">
               <img src="./src/assets/images/cases/logistics-cover.webp" alt="Стеклянный грузовик на светящемся маршруте между складами" width="1600" height="900" loading="lazy">
@@ -190,7 +164,7 @@
             </dl>
           </a>
         </article>
-        <article class="case-card" data-case data-sphere="production" data-format="individual" data-tasks="crm-new 1c sales" data-tags="bitrix24">
+        <article class="case-card" data-case data-sphere="production" data-tasks="crm-new 1c sales" data-tags="bitrix24">
           <a class="case-card__link" href="https://3d-group.space/cases/tehanalog/">
             <div class="case-card__media case-card__media--cover">
               <img src="./src/assets/images/cases/diamond-cover.webp" alt="Стеклянный алмаз над диском алмазной пилы" width="1600" height="900" loading="lazy">
@@ -208,7 +182,7 @@
             </dl>
           </a>
         </article>
-        <article class="case-card" data-case data-sphere="retail" data-format="individual" data-tasks="sales site-crm telephony" data-tags="bitrix24">
+        <article class="case-card" data-case data-sphere="retail" data-tasks="sales site-crm telephony" data-tags="bitrix24">
           <a class="case-card__link" href="https://3d-group.space/cases/ekipirvovka-ekspert/">
             <div class="case-card__media case-card__media--cover">
               <img src="./src/assets/images/cases/gear-cover.webp" alt="Стеклянные шлем и рюкзак на подиуме" width="1600" height="900" loading="lazy">
@@ -226,7 +200,7 @@
             </dl>
           </a>
         </article>
-        <article class="case-card" data-case data-sphere="law" data-format="ready" data-tasks="crm-new site-crm processes" data-tags="bitrix24">
+        <article class="case-card" data-case data-sphere="law" data-tasks="crm-new site-crm processes" data-tags="bitrix24">
           <a class="case-card__link" href="https://3d-group.space/cases/fabula-dela/">
             <div class="case-card__media case-card__media--cover">
               <img src="./src/assets/images/cases/bankruptcy-cover.webp" alt="Стеклянные весы правосудия над разорванной цепью" width="1600" height="900" loading="lazy">
@@ -252,7 +226,7 @@
             </dl>
           </a>
         </article>
-        <article class="case-card" data-case data-sphere="retail" data-format="individual" data-tasks="migration 1c sales" data-tags="bitrix24">
+        <article class="case-card" data-case data-sphere="retail" data-tasks="migration 1c sales" data-tags="bitrix24">
           <a class="case-card__link" href="https://3d-group.space/cases/hunt-optic/">
             <div class="case-card__media case-card__media--cover">
               <img src="./src/assets/images/cases/outdoor-cover.webp" alt="Стеклянная палатка, удочка и компас на скале" width="1600" height="900" loading="lazy">
@@ -270,7 +244,7 @@
             </dl>
           </a>
         </article>
-        <article class="case-card" data-case data-sphere="finance" data-format="individual" data-tasks="crm-new analytics processes" data-tags="bitrix24">
+        <article class="case-card" data-case data-sphere="finance" data-tasks="crm-new analytics processes" data-tags="bitrix24">
           <a class="case-card__link" href="https://3d-group.space/cases/germes-finans/">
             <div class="case-card__media case-card__media--cover">
               <img src="./src/assets/images/cases/finance-cover.webp" alt="Стопки стеклянных монет, растущие как график" width="1600" height="900" loading="lazy">
@@ -288,7 +262,7 @@
             </dl>
           </a>
         </article>
-        <article class="case-card" data-case data-sphere="services" data-format="individual" data-tasks="sales telephony analytics" data-tags="bitrix24">
+        <article class="case-card" data-case data-sphere="services" data-tasks="sales telephony analytics" data-tags="bitrix24">
           <a class="case-card__link" href="https://3d-group.space/cases/khitryy-lis/">
             <div class="case-card__media case-card__media--cover">
               <img src="./src/assets/images/cases/party-cover.webp" alt="Стеклянные воздушные шары и конфетти" width="1600" height="900" loading="lazy">
@@ -306,7 +280,7 @@
             </dl>
           </a>
         </article>
-        <article class="case-card" data-case data-sphere="auto" data-format="ready" data-tasks="sales site-crm growth" data-tags="bitrix24">
+        <article class="case-card" data-case data-sphere="auto" data-tasks="sales site-crm growth" data-tags="bitrix24">
           <a class="case-card__link" href="https://3d-group.space/cases/formula-avto/">
             <div class="case-card__media case-card__media--cover">
               <img src="./src/assets/images/cases/auto-cover.webp" alt="Стеклянный автомобиль на поворотном подиуме" width="1600" height="900" loading="lazy">
@@ -331,6 +305,7 @@
             <a class="place-card__btn" href="#feedback-modal" data-fancybox>Обсудить проект <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg></a>
           </div>
         </div>
+        <nav class="pager" aria-label="Страницы кейсов" data-pager hidden></nav>
       </div>
     </section>
     <section class="feedback" id="feedback">
@@ -393,7 +368,7 @@
         </div>
       </div>
       <hr class="footer__line">
-      <p class="footer__copy">© 3D GROUP | 2019 — 2025 | <a href="#">Пользовательское соглашение</a> | <a href="#">Договор оферты</a></p>
+      <p class="footer__copy">© 3D GROUP | 2019 — <span data-year-now>2026</span> | <a href="#">Пользовательское соглашение</a> | <a href="#">Договор оферты</a></p>
     </div>
   </footer>
 

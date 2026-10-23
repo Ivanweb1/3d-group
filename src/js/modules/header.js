@@ -1,4 +1,12 @@
 export function initHeader({ lenis } = {}) {
+  // Текущий год в «2019 — 2026»
+  document.querySelectorAll('[data-year-now]').forEach((el) => { el.textContent = new Date().getFullYear(); });
+
+  // После начала прокрутки под шапкой появляется размытая подложка
+  const onScroll = () => document.documentElement.classList.toggle('is-scrolled', window.scrollY > 10);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
   const burger = document.querySelector('[data-burger]');
   const nav = document.getElementById('mobile-nav');
   if (!burger || !nav) return;
